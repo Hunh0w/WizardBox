@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WizardBox | Authentification</title>
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- HEADER-->
+        <link href="/assets/css/header.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+        <!-- CONTENT -->
+        <link href="/assets/css/login.css" rel="stylesheet" />
+        <link href="/assets/css/core/inputtext.css" rel="stylesheet" />
+        <link href="/assets/css/core/buttons.css" rel="stylesheet" />
+    </head>
+    <body>
+
+        <div id="background">
+
+            <div th:replace="includes/header"></div>
+
+            <!-- CONTENT -->
+            <div id="content">
+                <div class="content">
+                    <span id="titleauth">Authentification</span>
+                    <form method="POST">
+                        <div class="form__group field">
+                            <input type="input" class="form__field" placeholder="Email" name="email" id='email' required />
+                            <label for="email" class="form__label">Email</label>
+                        </div>
+                        <div class="form__group field">
+                            <input type="password" class="form__field" placeholder="Mot de passe" name="password" id='password' required />
+                            <label for="password" class="form__label">Mot de passe</label>
+                        </div>
+                        <div class="btndiv">
+                            <a>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                Valider
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="includes/scripts"></div>
+    </body>
+</html>

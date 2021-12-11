@@ -1,0 +1,270 @@
+#background {
+    background-image: url('../imgs/bg2.jpg');
+    background-size: cover;
+    padding-bottom: 300px;
+    width: 100%;
+}
+
+#content #overview #stats div.grade h1 {
+    color: rgb(141, 0, 0);
+    font-weight: bold;
+}
+
+@media screen and (min-width: 1000px){
+
+    #content {
+        display: flex;
+        justify-content: center;
+        color: white;
+        width: 100%;
+        flex-direction: row;
+    }
+
+    #content > * {
+        margin-top: 100px;
+        transition: 0.4s all;
+    }
+
+
+
+    #content > *:hover {
+        border: 1px solid rgb(141, 0, 0);
+        transition: 0.4s all;
+    }
+
+    #content #mainnew {
+        display: flex;
+        justify-content: center;
+        width: 1000px;
+        padding-bottom: 20px;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
+    }
+
+    #content #mainnew .mainnew {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 90%;
+        
+    }
+
+    #content #mainnew .mainnew div.author {
+        margin-top: 10px;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    #content #mainnew .mainnew div.author span.author {
+        float: right;
+    }
+
+    #content #overview {
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
+        width: 600px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin-left: 30px;
+        flex-direction: column;
+    }
+
+
+
+    #content #overview #stats {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #content #overview #stats > * {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+    }
+
+    #content #overview #stats div.stats1 {
+        margin-bottom: 20px;
+    }
+
+    #content #overview #stats div.stats2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-bottom: 30px;
+    }
+
+    #content #overview #stats div.stats2 > * {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    #content #overview #stats div.stats1 > * {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #content #overview #stats .key {
+        font-weight: bold;
+        color: #fff;
+        font-size: 30px;
+    }
+
+    #content #overview #stats div.stats2 .value {
+        margin-top: 10px;
+    }
+
+    #content #overview #stats div.stats2 .number {
+        font-weight: bold;
+        color:rgb(141, 0, 0);
+    }
+
+    #content #overview #stats div.level > div.value {
+        margin-top: 15px;
+    }
+    #content #overview #stats div.grade {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    #content #overview #stats div.grade > span.value {
+        margin-top: 20px;
+        color: rgb(141, 0, 0);
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+}
+
+@media screen and (max-width: 1000px){
+
+    #content {
+        display: flex;
+        justify-content: center;
+        color: white;
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+
+    #content > * {
+        margin-top: 10px;
+    }
+
+    #content #mainnew {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding-bottom: 20px;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-top: 1px solid rgb(88, 0, 0);
+    }
+    #content #mainnew .mainnew {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        width: 90%;
+    }
+
+    #content #mainnew .mainnew div.author {
+        margin-top: 10px;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    #content #mainnew .mainnew div.author span.author {
+        float: right;
+    }
+
+    #content #overview {
+        background-color: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-top: 40px;
+        flex-direction: column;
+        border-top: 1px solid rgb(88, 0, 0);
+    }
+
+    #content #overview #stats {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #content #overview #stats > * {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+    }
+
+    #content #overview #stats div.stats1 {
+        margin-bottom: 20px;
+    }
+
+    #content #overview #stats div.stats2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-bottom: 30px;
+    }
+
+    #content #overview #stats div.stats2 > * {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    #content #overview #stats div.stats1 > * {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #content #overview #stats .key {
+        font-weight: bold;
+        color: #fff;
+        font-size: 30px;
+    }
+
+    #content #overview #stats div.stats2 .value {
+        margin-top: 10px;
+    }
+
+    #content #overview #stats div.stats2 .number {
+        font-weight: bold;
+        color:rgb(141, 0, 0);
+    }
+
+    #content #overview #stats div.level > div.value {
+        margin-top: 15px;
+    }
+    #content #overview #stats div.grade {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    #content #overview #stats div.grade > span.value {
+        margin-top: 20px;
+        color: rgb(141, 0, 0);
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+}

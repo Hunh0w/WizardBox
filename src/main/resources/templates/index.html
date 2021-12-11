@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WizardBox | Accueil</title>
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- HEADER-->
+        <link href="/assets/css/header.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+        <!-- CONTENT -->
+        <link href="/assets/css/core/loading.css" rel="stylesheet" />
+        <link href="/assets/css/index.css" rel="stylesheet" />
+        <link href="/assets/css/ratingcirle.css" rel="stylesheet" />
+        
+    </head>
+    <body>
+
+        <div class="loader_container">
+            <div class="loader">CHARGEMENT...</div>
+        </div>
+        
+        <div id="background">
+
+            <div th:replace="includes/header :: header"></div>
+
+            <!-- CONTENT -->
+            <div id="content">
+                <div id="mainnew">
+                    <div class="mainnew">
+                        <h1>TITRE DE LA NEWS</h1>
+                        <span>Hello
+                            Le Monde et ses partenaires peuvent, indépendamment ou conjointement, déposer lors de votre visite sur ce site des cookies et technologies similaires, afin de collecter des informations, y compris des données personnelles, telles que : adresse IP, identifiants uniques, données de navigation, données de géolocalisation.
+                            Ces données sont traitées par Le Monde et/ou ses partenaires, dont des partenaires publicitaires, aux fins suivantes : analyser et améliorer l’expérience utilisateur et l’offre de contenus, produits et services du Monde, stocker et/ou accéder à des informations sur un terminal, mesurer et analyser l’audience, interagir avec les réseaux sociaux, lutter contre la fraude, afficher des publicités et contenus personnalisés sur le site du Monde ou de tiers, mesure de performance des publicités et du contenu, données d'audience et développement de produits. Pour plus d’informations, consulter notre politique de confidentialité
+                            A l’exception de ceux nécessaires au fonctionnement du site ainsi que, sous certaines conditions, à la mesure d’audience, les cookies et technologies similaires ne peuvent être déposés qu’avec votre consentement. Vous pouvez librement donner, refuser ou retirer votre consentement à tout moment en accédant à notre outil de paramétrage des cookies. Si vous ne consentez pas à l’utilisation de ces technologies, nous considérerons que vous vous opposez également à tout dépôt de cookie que certains partenaires justifient par un intérêt légitime.
+                        </span>
+                        <div class="author">
+                            <span class="author">by <a href="#">Hunh0w</a></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="overview">
+                    <!--
+                        <h1>Vous n'êtes pas connecté</h1> 
+                    -->
+                    <h1>Vos statistiques</h1>
+                    <div id="stats">
+
+                        <div class="stats1">
+                            <div class="grade">
+                                <span class="key">Grade</span>
+                                <span class="value">H4CK3R</span>
+                            </div>
+                            <div class="level">
+                                <span class="key">Niveau</span>
+                                <div class="rating value">60</div>
+                            </div>
+                        </div>
+                        <div class="stats2">
+                            <div class="ctf">
+                                <span class="key">CTF</span>
+                                <span class="value"><span class="number">23</span> Flags</span>
+                            </div>
+                            <div class="challenges">
+                                <span class="key">Challenges</span>
+                                <span class="value"><span class="number">100</span> Flags</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Site footer 
+        <footer class="footer-distributed">
+			<div class="footer-right">
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="#"><i class="fa fa-github"></i></a>
+			</div>
+			<div class="footer-left">
+				<p class="footer-links">
+					<a class="link-1" href="#">Home</a>
+					<a href="#">Blog</a>
+					<a href="#">Pricing</a>
+					<a href="#">About</a>
+					<a href="#">Faq</a>
+					<a href="#">Contact</a>
+				</p>
+				<p>Company Name &copy; 2015</p>
+			</div>
+		</footer>
+-->
+        <!-- JS LIBS -->
+        <div th:replace="includes/scripts"></div>
+    </body>
+</html>
