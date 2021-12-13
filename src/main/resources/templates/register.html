@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>WizardBox | Authentification</title>
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- HEADER-->
+        <link href="/assets/css/header.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+        <!-- CONTENT -->
+        <link href="/assets/css/register.css" rel="stylesheet" />
+        <link href="/assets/css/core/inputtext.css" rel="stylesheet" />
+        <link href="/assets/css/core/buttons.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div th:replace="includes/header"></div>
+
+        <div th:each="Utilisateur : ${users}">
+            <span th:text="${users}"></span>
+        </div>
+
+        <div th:replace="includes/scripts"></div>
+    </body>
+</html>

@@ -4,5 +4,5 @@ function toAuth(){
 }
 
 function toReg(){
-    document.location.href = "#";
+    document.location.href = "/register";
 }
