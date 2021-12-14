@@ -1,0 +1,16 @@
+package fr.hunh0w.wizardbox.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+
+    /* ACCUEIL */
+    @GetMapping("/")
+    public String getHome(Model model){
+        return "index";
+    }
+
+}

@@ -21,6 +21,11 @@
 
             <div th:replace="includes/header"></div>
 
+            <div id="messageblock" th:with="formdata=${formdata}">
+                <span th:if="${formdata == null}"></span>
+                <span th:unless="${true}" th:text="${formdata}"></span>
+            </div>
+
             <!-- CONTENT -->
             <div id="content">
                 <div class="content">
@@ -34,7 +39,7 @@
                             <input type="password" class="form__field" placeholder="Mot de passe" name="password" id='password' required />
                             <label for="password" class="form__label">Mot de passe</label>
                         </div>
-                        <div class="btndiv">
+                        <div class="btndiv" type="submit" id="btnsubmit">
                             <a>
                                 <span></span>
                                 <span></span>
@@ -48,6 +53,7 @@
             </div>
         </div>
 
+        <script src="/assets/js/login.js"></script>
         <div th:replace="includes/scripts"></div>
     </body>
 </html>
