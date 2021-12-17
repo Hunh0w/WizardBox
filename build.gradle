@@ -14,8 +14,7 @@ repositories {
 
 
 dependencies {
-    implementation 'mysql:mysql-connector-java:8.0.14'
-    implementation group: 'com.zaxxer', name: 'HikariCP', version: '4.0.1'
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-ldap'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-mail'

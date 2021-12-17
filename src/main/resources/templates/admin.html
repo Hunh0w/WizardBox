@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>WizardBox | Authentification</title>
+        <title>WizardBox | Admin</title>
         <meta charset="utf-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,19 +12,21 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
         <!-- CONTENT -->
-        <link href="/assets/css/register.css" rel="stylesheet" />
+        <link href="/assets/css/admin.css" rel="stylesheet" />
         <link href="/assets/css/core/inputtext.css" rel="stylesheet" />
         <link href="/assets/css/core/buttons.css" rel="stylesheet" />
     </head>
     <body>
-        <div th:replace="includes/header"></div>
+    <div th:replace="includes/header"></div>
 
-        <div id="background">
-            <div>
-                <span th:each="user: ${users}" th:text="${user}"></span>
-            </div>
+    <div id="background">
+
+        <div th:each="value: ${postvalues}">
+            <span th:text="${value}"></span>
         </div>
 
-        <div th:replace="includes/scripts"></div>
+    </div>
+
+    <div th:replace="includes/scripts"></div>
     </body>
 </html>

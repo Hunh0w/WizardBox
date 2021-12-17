@@ -7,7 +7,7 @@ import java.sql.Connection;
 
 public class HikariDatabase {
 
-    private DatabaseCredentials credents;
+    private final DatabaseCredentials credents;
     private HikariDataSource source = null;
     private TablesBuilder tables = null;
 
@@ -23,7 +23,7 @@ public class HikariDatabase {
 
     private void initHikari() {
         HikariConfig config = new HikariConfig();
-        config.setDriverClassName("com.mysql.jdbc.Driver");
+        config.setDataSourceClassName("org.postgresql.ds.PGSimpleDataSource");
         config.setMaximumPoolSize(10);
         config.setJdbcUrl(credents.toURI());
         config.setUsername(credents.getUser());

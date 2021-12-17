@@ -17,7 +17,7 @@ public class SQLManager {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM users;");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                list.add(rs.getString("pseudo"));
+                list.add(rs.getString("pseudo")+" id: "+rs.getInt("id"));
             }
             ps.close();
             con.close();

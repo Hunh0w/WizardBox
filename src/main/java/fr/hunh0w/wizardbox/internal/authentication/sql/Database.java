@@ -2,9 +2,9 @@ package fr.hunh0w.wizardbox.internal.authentication.sql;
 
 public enum Database {
 
-    WIZARDBOX(new DatabaseCredentials("127.0.0.1", "wizardbox", 3306, "wizardbox", "WIZARDBOX6769"));
+    WIZARDBOX(new DatabaseCredentials("127.0.0.1", "WizardBox", 5432, "wizardbox", "WIZARDBOX6769"));
 
-    private HikariDatabase database;
+    private final HikariDatabase database;
 
     Database(DatabaseCredentials credentials){
         database = new HikariDatabase(credentials);
@@ -16,7 +16,7 @@ public enum Database {
 
     public static void initAll() {
         String users = "CREATE TABLE IF NOT EXISTS users ("+
-                "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "+
+                "id INT GENERATED ALWAYS AS IDENTITY,"+
                 "pseudo VARCHAR(30) UNIQUE, "+
                 "nom VARCHAR(20),"+
                 "prenom VARCHAR(20), "+

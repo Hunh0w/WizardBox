@@ -9,7 +9,7 @@ public class WizardboxApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WizardboxApplication.class, args);
-        //AuthManager.init();
+        AuthManager.init();
 
 
     }
