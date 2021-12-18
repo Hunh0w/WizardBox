@@ -16,11 +16,15 @@ public enum Database {
 
     public static void initAll() {
         String users = "CREATE TABLE IF NOT EXISTS users ("+
-                "id INT GENERATED ALWAYS AS IDENTITY,"+
-                "pseudo VARCHAR(30) UNIQUE, "+
+                "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,"+
+                "email VARCHAR(50) UNIQUE,"+
+                "pseudo VARCHAR(24) UNIQUE,"+
                 "nom VARCHAR(20),"+
-                "prenom VARCHAR(20), "+
-                "password VARCHAR(200)"+
+                "prenom VARCHAR(20),"+
+                "password VARCHAR(150),"+
+                "activity VARCHAR(50) DEFAULT NULL,"+
+                "points INT DEFAULT 0,"+
+                "rank INT DEFAULT 0"+
                 ")";
         WIZARDBOX.getDatabase().getTablesBuilder().addQuery(users);
         for(Database db : Database.values()) {

@@ -1,6 +1,6 @@
 package fr.hunh0w.wizardbox;
 
-import fr.hunh0w.wizardbox.internal.authentication.AuthManager;
+import fr.hunh0w.wizardbox.internal.authentication.managers.AuthManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

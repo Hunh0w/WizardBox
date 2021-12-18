@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns:th="http://thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>WizardBox | Authentification</title>
@@ -17,14 +17,54 @@
         <link href="/assets/css/core/buttons.css" rel="stylesheet" />
     </head>
     <body>
-        <div th:replace="includes/header"></div>
-
         <div id="background">
-            <div>
-                <span th:each="user: ${users}" th:text="${user}"></span>
+            <div th:replace="includes/header"></div>
+
+            <div id="content">
+                <div class="content">
+
+                    <span th:text="${error == null} ? 'Authentification' : ${error}" th:style="${error == null} ? '' : 'color: red;'" id="titleauth"></span>
+
+                    <form method="POST" th:object="${regdata}">
+                        <div class="form__group field" id="divnom">
+                            <input th:value="${regdata == null} ? '' : ${regdata.nom}" type="input" class="form__field" placeholder="Nom" name="nom" id='nom' required />
+                            <label for="nom" class="form__label">Nom</label>
+                        </div>
+                        <div class="form__group field" id="divprenom">
+                            <input th:value="${regdata == null} ? '' : ${regdata.prenom}" type="input" class="form__field" placeholder="Prénom" name="prenom" id='prenom' required />
+                            <label for="prenom" class="form__label">Prénom</label>
+                        </div>
+                        <div class="form__group field" id="divpseudo">
+                            <input th:value="${regdata == null} ? '' : ${regdata.pseudo}" type="input" class="form__field" placeholder="Pseudonyme" name="pseudo" id='pseudo' required />
+                            <label for="pseudo" class="form__label">Pseudonyme</label>
+                        </div>
+                        <div class="form__group field" id="divmail">
+                            <input th:value="${regdata == null} ? '' : ${regdata.email}" type="input" class="form__field" placeholder="Email" name="email" id='email' required />
+                            <label for="email" class="form__label">Email</label>
+                        </div>
+                        <div class="form__group field" id="divmdp">
+                            <input type="password" class="form__field" placeholder="Mot de passe" name="password" id='password' required />
+                            <label for="password" class="form__label">Mot de passe</label>
+                        </div>
+                        <div class="form__group field" id="divmdpconf">
+                            <input type="password" class="form__field" placeholder="Confirmation du Mot de passe" name="password_confirm" id='password_confirm' required />
+                            <label for="password_confirm" class="form__label">Confirmation du Mot de passe</label>
+                        </div>
+                        <div class="btndiv" type="submit" id="btnsubmit">
+                            <a>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                Valider
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
+        <script src="/assets/js/submit.js"></script>
         <div th:replace="includes/scripts"></div>
     </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns:th="http://thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>WizardBox | Admin</title>
@@ -17,9 +17,9 @@
         <link href="/assets/css/core/buttons.css" rel="stylesheet" />
     </head>
     <body>
-    <div th:replace="includes/header"></div>
 
     <div id="background">
+        <div th:replace="includes/header"></div>
 
         <div th:each="value: ${postvalues}">
             <span th:text="${value}"></span>

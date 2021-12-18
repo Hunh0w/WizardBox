@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr" xmlns:th="http://thymeleaf.org">
     <head>
+        <meta charset="UTF-8">
         <title>WizardBox | Authentification</title>
         <meta charset="utf-8">
 
@@ -29,8 +30,8 @@
             <!-- CONTENT -->
             <div id="content">
                 <div class="content">
-                    <span id="titleauth">Authentification</span>
-                    <form method="POST">
+                    <span th:text="${error == null} ? 'Authentification' : ${error}" th:style="${error == null} ? '' : 'color: red;'" id="titleauth"></span>
+                    <form method="POST" th:object="${logindata}">
                         <div class="form__group field">
                             <input type="input" class="form__field" placeholder="Email" name="email" id='email' required />
                             <label for="email" class="form__label">Email</label>
@@ -53,7 +54,7 @@
             </div>
         </div>
 
-        <script src="/assets/js/login.js"></script>
+        <script src="/assets/js/submit.js"></script>
         <div th:replace="includes/scripts"></div>
     </body>
 </html>
