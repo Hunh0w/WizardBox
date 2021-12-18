@@ -1,7 +1,5 @@
 package fr.hunh0w.wizardbox.internal.authentication.objects;
 
-import fr.hunh0w.wizardbox.internal.authentication.crypto.CryptoManager;
-
 public class RegisterData {
 
     private String email;

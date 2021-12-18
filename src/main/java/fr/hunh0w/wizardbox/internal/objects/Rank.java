@@ -10,10 +10,10 @@ public enum Rank {
     Professionnal(4, "Professionnel", "#7A00AF", null),
     Professeur(5, "Professeur", "#7A00AF", null);
 
-    private int id;
-    private String name;
-    private String color;
-    private String cssattr;
+    private final int id;
+    private final String name;
+    private final String color;
+    private final String cssattr;
 
     Rank(int id, String name, String color, String cssattr){
         this.id = id;

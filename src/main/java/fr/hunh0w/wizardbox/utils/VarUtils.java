@@ -20,9 +20,7 @@ public class VarUtils {
     public static boolean isEmail(String email){
         if(email.matches("[^0-9a-zA-Z @]"))
             return false;
-        if(!email.matches("^\\S+@\\S+\\.\\S+$"))
-            return false;
-        return true;
+        return email.matches("^\\S+@\\S+\\.\\S+$");
     }
 
 }

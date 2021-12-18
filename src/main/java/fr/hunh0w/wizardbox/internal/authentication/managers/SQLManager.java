@@ -5,7 +5,6 @@ import fr.hunh0w.wizardbox.internal.authentication.objects.LoginData;
 import fr.hunh0w.wizardbox.internal.authentication.objects.RegisterData;
 import fr.hunh0w.wizardbox.internal.authentication.sql.Database;
 
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
