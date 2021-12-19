@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class TablesBuilder {
 
-    private ArrayList<String> requests = new ArrayList<>();
+    private final ArrayList<String> requests = new ArrayList<>();
 
     public TablesBuilder(String... queries) {
         requests.addAll(Arrays.asList(queries));

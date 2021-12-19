@@ -5,18 +5,18 @@ import java.util.Date;
 
 public class Account {
 
-    private int id;
-    private String email;
-    private String pseudo;
-    private String nom;
-    private String prenom;
-    private String activity;
-    private int points;
-    private int rank;
+    private final int id;
+    private final String email;
+    private final String pseudo;
+    private final String nom;
+    private final String prenom;
+    private final String activity;
+    private final int points;
+    private final int rank;
     private ArrayList<String> ctf_flags;
     private ArrayList<String> chall_flags;
 
-    private Date init_date = new Date();
+    private final Date init_date = new Date();
 
     public Account(int id, String email, String pseudo, String nom, String prenom, String activity, int points, int rank) {
         this.id = id;
@@ -72,7 +72,7 @@ public class Account {
     }
 
     public int getLevel(){
-        int level = (int) Math.floor((double)((Math.abs(this.points) + 100) / 100));
+        int level = (int) Math.floor((Math.abs(this.points) + 100) / 100);
         return level;
     }
 

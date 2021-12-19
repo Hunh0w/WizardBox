@@ -1,14 +1,12 @@
 package fr.hunh0w.wizardbox.internal.managers;
 
 import fr.hunh0w.wizardbox.internal.authentication.crypto.CryptoManager;
-import fr.hunh0w.wizardbox.internal.authentication.managers.AuthManager;
 import fr.hunh0w.wizardbox.internal.authentication.objects.LoginData;
 import fr.hunh0w.wizardbox.internal.authentication.objects.RegisterData;
 import fr.hunh0w.wizardbox.internal.session.objects.Account;
 import fr.hunh0w.wizardbox.internal.sql.Database;
 import fr.hunh0w.wizardbox.utils.VarUtils;
 
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

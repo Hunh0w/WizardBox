@@ -1,8 +1,8 @@
 package fr.hunh0w.wizardbox.controllers;
 
 import fr.hunh0w.wizardbox.internal.authentication.managers.AuthManager;
-import fr.hunh0w.wizardbox.internal.managers.SQLManager;
 import fr.hunh0w.wizardbox.internal.authentication.objects.RegisterData;
+import fr.hunh0w.wizardbox.internal.managers.SQLManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -2,11 +2,11 @@ package fr.hunh0w.wizardbox.internal.sql;
 
 public class DatabaseCredentials {
 
-    private String host;
-    private String database;
-    private int port;
-    private String user;
-    private String password;
+    private final String host;
+    private final String database;
+    private final int port;
+    private final String user;
+    private final String password;
 
     public DatabaseCredentials(String host, String database, int port, String user, String password) {
         this.host = host;
