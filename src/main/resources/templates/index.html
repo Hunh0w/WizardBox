@@ -5,6 +5,7 @@
         <meta charset="utf-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 
         <!-- HEADER-->
         <link href="/assets/css/header.css" rel="stylesheet" />
@@ -13,7 +14,7 @@
         <!-- CONTENT -->
         <link href="/assets/css/core/loading.css" rel="stylesheet" />
         <link href="/assets/css/index.css" rel="stylesheet" />
-        <link href="/assets/css/ratingcirle.css" rel="stylesheet" />
+        <link href="/assets/css/core/ratingcirle.css" rel="stylesheet" />
 
         <!-- FOOTER -->
         <link href="/assets/css/footer.css" rel="stylesheet" />
@@ -44,21 +45,17 @@
                         </div>
                     </div>
                 </div>
-                <div id="overview">
-                    <!--
-                        <h1>Vous n'êtes pas connecté</h1> 
-                    -->
+                <div id="overview" th:if="${!session.isEmpty()}" th:with="rank=${T(fr.hunh0w.wizardbox.internal.objects.Rank).getRank(session.account.getRank())}">
                     <h1>Vos statistiques</h1>
                     <div id="stats">
-
                         <div class="stats1">
                             <div class="grade">
                                 <span class="key">Grade</span>
-                                <span class="value">H4CK3R</span>
+                                <span class="value" th:text="${rank.getName()}" th:style="'color: '+${rank.getColor()}+';' + (${rank.getCssattr() == null}?'':${rank.getCssattr()})"></span>
                             </div>
                             <div class="level">
                                 <span class="key">Niveau</span>
-                                <div class="rating value">60</div>
+                                <div class="rating value" th:text="${session.account.getLevel()}" th:points="${session.account.getPourcentPoints()}"></div>
                             </div>
                         </div>
                         <div class="stats2">
@@ -76,27 +73,6 @@
             </div>
         </div>
 
-        <!-- Site footer 
-        <footer class="footer-distributed">
-			<div class="footer-right">
-				<a href="#"><i class="fa fa-facebook"></i></a>
-				<a href="#"><i class="fa fa-twitter"></i></a>
-				<a href="#"><i class="fa fa-linkedin"></i></a>
-				<a href="#"><i class="fa fa-github"></i></a>
-			</div>
-			<div class="footer-left">
-				<p class="footer-links">
-					<a class="link-1" href="#">Home</a>
-					<a href="#">Blog</a>
-					<a href="#">Pricing</a>
-					<a href="#">About</a>
-					<a href="#">Faq</a>
-					<a href="#">Contact</a>
-				</p>
-				<p>Company Name &copy; 2015</p>
-			</div>
-		</footer>
--->
         <div th:replace="includes/footer :: footer"></div>
 
         <!-- JS LIBS -->

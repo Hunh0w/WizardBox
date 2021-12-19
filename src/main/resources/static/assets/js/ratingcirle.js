@@ -4,7 +4,8 @@ const ratings = document.querySelectorAll(".rating");
 // Iterate over all rating items
 ratings.forEach((rating) => {
   // Get content and get score as an int
-  const ratingContent = rating.innerHTML;
+  const ratingContent = rating.getAttribute("points");
+  const level = rating.innerHTML;
   const ratingScore = parseInt(ratingContent, 10);
 
   // Define if the score is good, meh or bad according to its value
@@ -24,7 +25,7 @@ ratings.forEach((rating) => {
   rating.setAttribute("style", gradient);
 
   // Wrap the content in a tag to show it above the pseudo element that masks the bar
-  rating.innerHTML = `<span>${ratingScore} ${
+  rating.innerHTML = `<span>${level} ${
     ratingContent.indexOf("%") >= 0 ? "<small>%</small>" : ""
   }</span>`;
 });

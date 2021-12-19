@@ -1,4 +1,4 @@
-package fr.hunh0w.wizardbox.internal.authentication.sql;
+package fr.hunh0w.wizardbox.internal.sql;
 
 public class DatabaseCredentials {
 

@@ -1,4 +1,4 @@
-package fr.hunh0w.wizardbox.internal.authentication.sql;
+package fr.hunh0w.wizardbox.internal.sql;
 
 public enum Database {
 
@@ -24,7 +24,9 @@ public enum Database {
                 "password VARCHAR(150),"+
                 "activity VARCHAR(50) DEFAULT NULL,"+
                 "points INT DEFAULT 0,"+
-                "rank INT DEFAULT 0"+
+                "rank INT DEFAULT 0,"+
+                "ctf_flags BYTEA DEFAULT NULL,"+
+                "chall_flags BYTEA DEFAULT NULL"+
                 ")";
         WIZARDBOX.getDatabase().getTablesBuilder().addQuery(users);
         for(Database db : Database.values()) {

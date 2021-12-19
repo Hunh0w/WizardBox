@@ -10,11 +10,15 @@
         <!-- HEADER-->
         <link href="/assets/css/header.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 
         <!-- CONTENT -->
         <link href="/assets/css/login.css" rel="stylesheet" />
         <link href="/assets/css/core/inputtext.css" rel="stylesheet" />
         <link href="/assets/css/core/buttons.css" rel="stylesheet" />
+
+        <!-- FOOTER -->
+        <link href="/assets/css/footer.css" rel="stylesheet" />
     </head>
     <body>
 
@@ -31,7 +35,7 @@
             <div id="content">
                 <div class="content">
                     <span th:text="${error == null} ? 'Authentification' : ${error}" th:style="${error == null} ? '' : 'color: red;'" id="titleauth"></span>
-                    <form method="POST" th:object="${logindata}">
+                    <form method="POST" th:object="${logindata}" id="loginform">
                         <div class="form__group field">
                             <input type="input" class="form__field" placeholder="Email" name="email" id='email' required />
                             <label for="email" class="form__label">Email</label>
@@ -54,7 +58,11 @@
             </div>
         </div>
 
-        <script src="/assets/js/submit.js"></script>
+        <div th:replace="includes/footer :: footer"></div>
         <div th:replace="includes/scripts"></div>
+
+        <script src="/assets/js/next_input_enter.js"></script>
+        <script src="/assets/js/submit.js"></script>
+
     </body>
 </html>

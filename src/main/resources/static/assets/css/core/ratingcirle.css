@@ -8,7 +8,7 @@
     --rating-color-background: black;
     --rating-color-good: #600079;
     --rating-color-meh: rgb(121, 14, 0);
-    --rating-color-bad: rgb(0, 158, 150);
+    --rating-color-bad: rgb(58, 58, 58);
   }
   
   /* Rating item */
@@ -68,21 +68,20 @@
     border-radius: inherit;
     box-shadow: 0 0 0 1rem var(--rating-color-background);
     z-index: -1;
-
   }
 
   .rating.good {
-    background: var(--rating-color-good);
-    color: rgb(141, 0, 146);
+    background: rgb(58, 58, 58);
+    color: rgb(121, 14, 0);
   }
   
   .rating.meh {
-    background: var(--rating-color-meh);
-    color: rgb(163, 0, 0);
+    background: rgb(58, 58, 58);
+    color: rgb(121, 14, 0);
   }
   
   .rating.bad {
-    background: var(--rating-color-bad);
-    color: rgb(0, 214, 230);
+    background: rgb(58, 58, 58);
+    color: rgb(121, 14, 0);
   }
   

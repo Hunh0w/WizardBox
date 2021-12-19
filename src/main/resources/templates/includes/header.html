@@ -8,8 +8,13 @@
         <li><a href="#">CTF</a></li>
         <li><a href="#">Contact</a></li>
     </nav>
-    <div class="buttons">
-        <button onclick="toAuth()">Authentification</button>
-        <button onclick="toReg()">Inscription</button>
-    </div>
+
+    <th:block th:if="${session.isEmpty()}">
+        <div th:replace="includes/session/header_session :: nologged"></div>
+    </th:block>
+    <th:block th:unless="${session.isEmpty()}">
+        <div th:replace="includes/session/header_session :: logged"></div>
+    </th:block>
+
+
 </header>

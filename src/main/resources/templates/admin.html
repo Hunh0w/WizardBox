@@ -10,6 +10,7 @@
         <!-- HEADER-->
         <link href="/assets/css/header.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 
         <!-- CONTENT -->
         <link href="/assets/css/admin.css" rel="stylesheet" />
@@ -21,11 +22,11 @@
     <div id="background">
         <div th:replace="includes/header"></div>
 
-        <div th:each="value: ${postvalues}">
-            <span th:text="${value}"></span>
-        </div>
+
 
     </div>
+
+    <div th:replace="includes/footer :: footer"></div>
 
     <div th:replace="includes/scripts"></div>
     </body>

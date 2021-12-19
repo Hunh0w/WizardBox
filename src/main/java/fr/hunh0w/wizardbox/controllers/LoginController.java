@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
 
@@ -18,10 +22,11 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login_postBody(@ModelAttribute("logindata") LoginData loginData, Model model) {
-        String result = AuthManager.check_login(loginData);
+    public String login_postBody(@ModelAttribute("logindata") LoginData loginData, Model model, HttpSession httpSession) {
+        String result = AuthManager.check_login(loginData, httpSession);
         if(result.equals(AuthManager.OK)){
-            //TODO SESSION OPEN
+            //SESSION OPEN
+            
             return "redirect:/";
         }
 

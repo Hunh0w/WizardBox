@@ -2,8 +2,12 @@ package fr.hunh0w.wizardbox.internal.authentication.managers;
 
 import fr.hunh0w.wizardbox.internal.authentication.objects.LoginData;
 import fr.hunh0w.wizardbox.internal.authentication.objects.RegisterData;
-import fr.hunh0w.wizardbox.internal.authentication.sql.Database;
+import fr.hunh0w.wizardbox.internal.managers.SQLManager;
+import fr.hunh0w.wizardbox.internal.session.objects.Account;
+import fr.hunh0w.wizardbox.internal.sql.Database;
 import fr.hunh0w.wizardbox.utils.VarUtils;
+
+import javax.servlet.http.HttpSession;
 
 public class AuthManager {
 
@@ -48,7 +52,7 @@ public class AuthManager {
     }
 
 
-    public static String check_login(LoginData loginData){
+    public static String check_login(LoginData loginData, HttpSession httpSession){
         if(loginData == null) return "Erreur Inconnue [LoginData]";
 
         if(loginData.getEmail().replaceAll(" ", "").isEmpty())
@@ -61,12 +65,11 @@ public class AuthManager {
         if(loginData.getPassword().replaceAll(" ", "").isEmpty())
             return "Le mot de passe est vide";
 
-        String resp = SQLManager.loginUser(loginData);
+        Account resp = SQLManager.loginUser(loginData);
         if(resp == null)
             return "Échec de l'Authentification";
-        if(!resp.equals(OK))
-            return resp;
 
+        httpSession.setAttribute("account", resp);
         return OK;
     }
 

@@ -26,12 +26,6 @@
     }
 
 
-
-    #content > *:hover {
-        border: 1px solid rgb(141, 0, 0);
-        transition: 0.4s all;
-    }
-
     #content #mainnew {
         display: flex;
         justify-content: center;
@@ -138,7 +132,6 @@
 
     #content #overview #stats div.grade > span.value {
         margin-top: 20px;
-        color: rgb(141, 0, 0);
         font-weight: bold;
         font-size: 30px;
     }
@@ -248,7 +241,7 @@
 
     #content #overview #stats div.stats2 .number {
         font-weight: bold;
-        color:rgb(141, 0, 0);
+        color: rgb(141, 0, 0);
     }
 
     #content #overview #stats div.level > div.value {
@@ -262,7 +255,6 @@
 
     #content #overview #stats div.grade > span.value {
         margin-top: 20px;
-        color: rgb(141, 0, 0);
         font-weight: bold;
         font-size: 30px;
     }
