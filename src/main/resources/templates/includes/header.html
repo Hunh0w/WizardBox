@@ -9,10 +9,10 @@
         <li><a href="#">Contact</a></li>
     </nav>
 
-    <th:block th:if="${session.isEmpty()}">
+    <th:block th:if="${session.isEmpty() || session.account == null}">
         <div th:replace="includes/session/header_session :: nologged"></div>
     </th:block>
-    <th:block th:unless="${session.isEmpty()}">
+    <th:block th:unless="${session.isEmpty() || session.account == null}">
         <div th:replace="includes/session/header_session :: logged"></div>
     </th:block>
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WizardBox | Erreur</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- HEADER-->
+    <link href="/assets/css/header.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+
+    <!-- CONTENT -->
+    <link href="/assets/css/error.css" rel="stylesheet" />
+
+    <!-- FOOTER -->
+    <link href="/assets/css/footer.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="background">
+        <div th:replace="includes/header"></div>
+
+        <div id="content">
+            <div id="contentbox">
+                <h1>Une erreur s'est produite :</h1>
+                <h1 th:text="${message == null}?'Origine de l\'erreur Inconnue, Merci de contacter un Administrateur':${message}"></h1>
+            </div>
+        </div>
+
+    </div>
+
+    <div th:replace="includes/footer :: footer"></div>
+    <div th:replace="includes/scripts"></div>
+</body>
+</html>

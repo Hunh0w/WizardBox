@@ -7,9 +7,17 @@ import java.security.NoSuchAlgorithmException;
 public class CryptoManager {
 
     public static String sha512_Hash(String sensible){
+        return Hash(sensible, "SHA-512");
+    }
+
+    public static String sha256_Hash(String sensible){
+        return Hash(sensible, "SHA-256");
+    }
+
+    public static String Hash(String sensible, String algo){
         String generatedPassword = null;
         try {
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            MessageDigest md = MessageDigest.getInstance(algo);
             byte[] bytes = md.digest(sensible.getBytes(StandardCharsets.UTF_8));
             StringBuilder sb = new StringBuilder();
             for(int i=0; i< bytes.length ;i++){

@@ -22,21 +22,30 @@ public class AuthManager {
 
         if(regdata.getNom().replaceAll(" ", "").isEmpty())
             return "Le nom est vide";
+        if(regdata.getNom().matches("[^0-9a-zA-Z_]"))
+            return "Le nom contient un caractère interdit";
         if(regdata.getNom().length() > 20) return "Le nom dépasse 20 caractères";
 
         if(regdata.getPrenom().replaceAll(" ", "").isEmpty())
             return "Le prénom est vide";
+        if(regdata.getPrenom().matches("[^0-9a-zA-Z_]"))
+            return "Le prénom contient un caractère interdit";
         if(regdata.getPrenom().length() > 20) return "Le prénom dépasse 20 caractères";
 
         if(regdata.getPseudo().replaceAll(" ", "").isEmpty())
             return "Le pseudonyme est vide";
+        if(regdata.getPseudo().matches("[^0-9a-zA-Z_]"))
+            return "Le pseudonyme contient un caractère interdit";
         if(regdata.getPseudo().length() > 24)
             return "Le pseudonyme dépasse 24 caractères";
 
         if(regdata.getEmail().replaceAll(" ", "").isEmpty())
             return "L'Email est vide";
+        if(!VarUtils.isEmail(regdata.getEmail()))
+            return "Email Invalide";
         if(regdata.getEmail().length() > 32)
             return "L'Email dépasse 32 caractères";
+
 
         if(regdata.getPassword().replaceAll(" ", "").isEmpty())
             return "Le mot de passe est vide";

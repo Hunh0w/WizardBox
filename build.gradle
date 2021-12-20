@@ -23,6 +23,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web-services:2.6.1'
     implementation 'org.springframework.boot:spring-boot-starter-webflux:2.6.1'
     implementation 'org.springframework.session:spring-session-core:2.6.0'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     developmentOnly 'org.springframework.boot:spring-boot-devtools:2.6.1'
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.1'

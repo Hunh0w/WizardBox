@@ -15,7 +15,8 @@ public class LoginController {
 
     /* LOGIN */
     @GetMapping("/login")
-    public String getLogin(){
+    public String getLogin(HttpSession httpSession){
+
         return "login";
     }
 

@@ -30,6 +30,7 @@
                     <span th:text="${error == null} ? 'Authentification' : ${error}" th:style="${error == null} ? '' : 'color: red;'" id="titleauth"></span>
 
                     <form method="POST" th:object="${regdata}">
+                        <input type="hidden" th:value="${_csrf.token}" name="_csrf"/>
                         <div class="form__group field" id="divnom">
                             <input th:value="${regdata == null} ? '' : ${regdata.nom}" type="input" class="form__field" placeholder="Nom" name="nom" id='nom' required />
                             <label for="nom" class="form__label">Nom</label>

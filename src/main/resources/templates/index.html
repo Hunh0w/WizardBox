@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="overview" th:if="${!session.isEmpty()}" th:with="rank=${T(fr.hunh0w.wizardbox.internal.objects.Rank).getRank(session.account.getRank())}">
+                <div id="overview" th:if="${!session.isEmpty() && session.account != null}" th:with="rank=${T(fr.hunh0w.wizardbox.internal.objects.Rank).getRank(session.account.getRank())}">
                     <h1>Vos statistiques</h1>
                     <div id="stats">
                         <div class="stats1">
