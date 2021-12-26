@@ -8,6 +8,8 @@ public class RegisterData {
     private String nom;
     private String prenom;
 
+    private String error;
+
     public String getEmail() {
         return email;
     }
@@ -48,6 +50,17 @@ public class RegisterData {
         this.prenom = prenom;
     }
 
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    public boolean hasErrors(){
+        return !(email == null && password == null && pseudo == null && nom == null && prenom == null && error == null);
+    }
 
     @Override
     public String toString() {

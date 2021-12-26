@@ -48,8 +48,64 @@ header > .titlehead > h1 {
     font-size: 50px;
 }
 
+
+
 /* STRUCTURE */
 @media screen and (min-width: 1000px){
+
+    /* MENU DEROULANT */
+    #header_profile_deroulant {
+        color: white;
+        margin-right: 100px;
+    }
+
+    #header_profile_deroulant div.header_menu_main {
+        padding-inline: 20px;
+        padding-block: 10px;
+        background-color: black;
+        border-bottom: 1px solid  rgb(78, 0, 0);
+        cursor: pointer;
+    }
+    #header_profile_deroulant:hover > div.header_menu_main {
+        border-inline: 1px dashed rgb(78, 0, 0);
+        border-bottom: none;
+    }
+
+    #header_profile_deroulant > div.header_menu_content {
+        display: none;
+    }
+    #header_profile_deroulant > .header_menu_main > span {
+        display: block;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    #header_profile_deroulant:hover > div.header_menu_content {
+        display: flex;
+        position: fixed;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #header_profile_deroulant:hover > div.header_menu_content > * {
+        padding: 15px;
+        background-color: black;
+        border-bottom: 1px solid rgb(78, 0, 0);
+    }
+    #header_profile_deroulant:hover > div.header_menu_content a {
+        text-decoration: none;
+        color: white;
+    }
+
+    #header_profile_deroulant > div.header_menu_content > span:hover {
+        border-bottom: 1px solid rgb(168, 65, 0);
+    }
+
+    #header_profile_deroulant > div.header_menu_content > span {
+        cursor: pointer;
+    }
+
 
     header .titlehead {
         margin-left: 10px;
@@ -99,6 +155,64 @@ header > .titlehead > h1 {
 }
 
 @media screen and (max-width: 1000px){
+
+    /* MENU DEROULANT */
+    #header_profile_deroulant {
+        color: white;
+        text-align: center;
+        margin-block: 20px;
+    }
+
+    #header_profile_deroulant div.header_menu_main {
+        padding-inline: 20px;
+        padding-block: 10px;
+        background-color: black;
+        border-bottom: 1px solid  rgb(78, 0, 0);
+        cursor: pointer;
+    }
+    #header_profile_deroulant:hover > div.header_menu_main {
+        border-inline: 1px dashed rgb(78, 0, 0);
+        border-bottom: none;
+    }
+
+    #header_profile_deroulant > div.header_menu_content {
+        display: none;
+    }
+    #header_profile_deroulant > .header_menu_main > span {
+        display: block;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    #header_profile_deroulant:hover > div.header_menu_content {
+        display: flex;
+        position: fixed;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #header_profile_deroulant:hover > div.header_menu_content > * {
+        padding: 15px;
+        background-color: black;
+        border-bottom: 1px solid rgb(78, 0, 0);
+    }
+    #header_profile_deroulant:hover > div.header_menu_content a {
+        text-decoration: none;
+        color: white;
+    }
+
+    #header_profile_deroulant > div.header_menu_content > span:hover {
+        border-bottom: 1px solid rgb(168, 65, 0);
+    }
+
+    #header_profile_deroulant > div.header_menu_content > span {
+        cursor: pointer;
+        width: 100px;
+    }
+
+
     header {
         width: 100%;
         background-color: rgba(0, 0, 0, 0.8);

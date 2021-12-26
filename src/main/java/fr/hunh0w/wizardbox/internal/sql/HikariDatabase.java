@@ -28,6 +28,7 @@ public class HikariDatabase {
         config.setJdbcUrl(credents.toURI());
         config.setUsername(credents.getUser());
         config.setPassword(credents.getPassword());
+        config.addDataSourceProperty("portNumber", credents.getPort());
         config.setMaxLifetime(600000L);
         config.setIdleTimeout(300000L);
         config.setLeakDetectionThreshold(300000L);

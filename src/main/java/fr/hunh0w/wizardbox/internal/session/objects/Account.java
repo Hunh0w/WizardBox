@@ -13,8 +13,8 @@ public class Account {
     private final String activity;
     private final int points;
     private final int rank;
-    private ArrayList<String> ctf_flags;
-    private ArrayList<String> chall_flags;
+    private ArrayList<String> ctf_flags = new ArrayList<>();
+    private ArrayList<String> chall_flags = new ArrayList<>();
 
     private final Date init_date = new Date();
 

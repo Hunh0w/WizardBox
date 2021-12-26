@@ -2,7 +2,8 @@ package fr.hunh0w.wizardbox.internal.sql;
 
 public enum Database {
 
-    WIZARDBOX(new DatabaseCredentials("127.0.0.1", "WizardBox", 5432, "wizardbox", "WIZARDBOX6769"));
+    WIZARDBOX(new DatabaseCredentials("127.0.0.1", "wizardbox", 5432, "wizardbox", "WIZARDBOX6769"));
+    // default port 5432
 
     private final HikariDatabase database;
 

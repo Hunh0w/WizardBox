@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://thymeleaf.org">
     <head>
-        <meta charset="UTF-8">
         <title>WizardBox | Admin</title>
-        <meta charset="utf-8">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <div th:replace="includes/globalhead"></div>
 
         <!-- HEADER-->
         <link href="/assets/css/header.css" rel="stylesheet" />
@@ -18,6 +16,10 @@
         <link href="/assets/css/core/buttons.css" rel="stylesheet" />
     </head>
     <body>
+
+    <div class="loader_container">
+        <div class="loader">CHARGEMENT...</div>
+    </div>
 
     <div id="background">
         <div th:replace="includes/header"></div>

@@ -1,6 +1,6 @@
 package fr.hunh0w.wizardbox.controllers;
 
-import fr.hunh0w.wizardbox.internal.managers.SessionManager;
+import fr.hunh0w.wizardbox.internal.session.managers.SessionManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 

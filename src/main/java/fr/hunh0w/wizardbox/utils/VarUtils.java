@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URLDecoder;
+import java.util.regex.Pattern;
 
 public class VarUtils {
 
@@ -22,9 +23,9 @@ public class VarUtils {
     }
 
     public static boolean isEmail(String email){
-        if(email.matches("[^0-9a-zA-Z @]"))
-            return false;
-        return email.matches("^\\S+@\\S+\\.\\S+$");
+        Pattern specialchars = Pattern.compile("[^0-9a-zA-Z@\\.]");
+        Pattern validemail = Pattern.compile("^\\S+@\\S+\\.\\S+$");
+        return (!specialchars.matcher(email).find() && validemail.matcher(email).find());
     }
 
     public static byte[] toByteArray(Object obj){

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://thymeleaf.org">
     <head>
-        <meta charset="UTF-8">
         <title>WizardBox | Authentification</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <div th:replace="includes/globalhead"></div>
 
         <!-- HEADER-->
         <link href="/assets/css/header.css" rel="stylesheet" />
@@ -21,6 +20,10 @@
     </head>
     <body>
 
+        <div class="loader_container">
+            <div class="loader">CHARGEMENT...</div>
+        </div>
+
         <div id="background">
 
             <div th:replace="includes/header"></div>
@@ -33,16 +36,16 @@
             <!-- CONTENT -->
             <div id="content">
                 <div class="content">
-                    <span th:text="${error == null} ? 'Authentification' : ${error}" th:style="${error == null} ? '' : 'color: red;'" id="titleauth"></span>
+                    <span th:text="${error.getError() == null} ? 'Authentification' : ${error.getError()}" th:style="${error.getError() == null} ? '' : 'color: #991111;'" id="titleauth"></span>
                     <form method="POST" th:object="${logindata}" id="loginform">
                         <input type="hidden" th:value="${_csrf.token}" name="_csrf"/>
                         <div class="form__group field">
-                            <input type="input" class="form__field" placeholder="Email" name="email" id='email' required />
-                            <label for="email" class="form__label">Email</label>
+                            <input th:class="${error.getEmail() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" type="input" placeholder="Email" name="email" id='email' required />
+                            <label th:text="${error.getEmail() == null} ? 'Email' : ${error.getEmail()}" for="email" class="form__label"></label>
                         </div>
                         <div class="form__group field">
-                            <input type="password" class="form__field" placeholder="Mot de passe" name="password" id='password' required />
-                            <label for="password" class="form__label">Mot de passe</label>
+                            <input th:class="${error.getPassword() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" type="password" placeholder="Mot de passe" name="password" id='password' required />
+                            <label th:text="${error.getPassword() == null} ? 'Mot de passe' : ${error.getPassword()}" for="password" class="form__label"></label>
                         </div>
                         <div class="btndiv" type="submit" id="btnsubmit">
                             <a>
@@ -63,6 +66,7 @@
 
         <script src="/assets/js/next_input_enter.js"></script>
         <script src="/assets/js/submit.js"></script>
+        <script src="/assets/js/inputtext.js"></script>
 
     </body>
 </html>

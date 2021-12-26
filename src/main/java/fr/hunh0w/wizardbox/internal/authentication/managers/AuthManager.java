@@ -8,6 +8,7 @@ import fr.hunh0w.wizardbox.internal.sql.Database;
 import fr.hunh0w.wizardbox.utils.VarUtils;
 
 import javax.servlet.http.HttpSession;
+import java.util.regex.Pattern;
 
 public class AuthManager {
 
@@ -17,69 +18,98 @@ public class AuthManager {
         Database.initAll();
     }
 
-    public static String check_register(RegisterData regdata){
-        if(regdata == null) return "Erreur Inconnue [RegisterData]";
+    public static final String ERROR_INVALID_CHAR = "Caractère(s) interdit";
+    public static final String ERROR_EMPTY = "Champ vide";
+    public static final String ERROR_INVALID_INPUT = "Champ invalide";
 
+    public static RegisterData check_register(RegisterData regdata){
+        Pattern pattern = Pattern.compile("[^0-9a-zA-Z_]");
+
+        RegisterData errors = new RegisterData();
+        if(regdata == null) {
+            errors.setError("Erreur Inconnue [RegisterData]");
+            return errors;
+        }
+
+
+        if(pattern.matcher(regdata.getNom()).find())
+            errors.setNom(ERROR_INVALID_CHAR);
+        if(regdata.getNom().length() > 20)
+            errors.setNom("Dépasse 20 caractères");
         if(regdata.getNom().replaceAll(" ", "").isEmpty())
-            return "Le nom est vide";
-        if(regdata.getNom().matches("[^0-9a-zA-Z_]"))
-            return "Le nom contient un caractère interdit";
-        if(regdata.getNom().length() > 20) return "Le nom dépasse 20 caractères";
+            errors.setNom(ERROR_EMPTY);
 
+
+
+        if(pattern.matcher(regdata.getPrenom()).find())
+            errors.setPrenom(ERROR_INVALID_CHAR);
+        if(regdata.getPrenom().length() > 20) errors.setPrenom("Dépasse 20 caractères");
         if(regdata.getPrenom().replaceAll(" ", "").isEmpty())
-            return "Le prénom est vide";
-        if(regdata.getPrenom().matches("[^0-9a-zA-Z_]"))
-            return "Le prénom contient un caractère interdit";
-        if(regdata.getPrenom().length() > 20) return "Le prénom dépasse 20 caractères";
+            errors.setPrenom(ERROR_EMPTY);
 
-        if(regdata.getPseudo().replaceAll(" ", "").isEmpty())
-            return "Le pseudonyme est vide";
-        if(regdata.getPseudo().matches("[^0-9a-zA-Z_]"))
-            return "Le pseudonyme contient un caractère interdit";
+
+
+        if(pattern.matcher(regdata.getPseudo()).find())
+            errors.setPseudo(ERROR_INVALID_CHAR);
         if(regdata.getPseudo().length() > 24)
-            return "Le pseudonyme dépasse 24 caractères";
+            errors.setPseudo("Dépasse 24 caractères");
+        if(regdata.getPseudo().replaceAll(" ", "").isEmpty())
+            errors.setPseudo(ERROR_EMPTY);
 
-        if(regdata.getEmail().replaceAll(" ", "").isEmpty())
-            return "L'Email est vide";
-        if(!VarUtils.isEmail(regdata.getEmail()))
-            return "Email Invalide";
+
+
         if(regdata.getEmail().length() > 32)
-            return "L'Email dépasse 32 caractères";
+            errors.setEmail("Dépasse 32 caractères");
+        if(!VarUtils.isEmail(regdata.getEmail()))
+            errors.setEmail(ERROR_INVALID_INPUT);
+        if(regdata.getEmail().replaceAll(" ", "").isEmpty())
+            errors.setEmail(ERROR_EMPTY);
 
 
-        if(regdata.getPassword().replaceAll(" ", "").isEmpty())
-            return "Le mot de passe est vide";
-        if(regdata.getPassword().length() > 50)
-            return "Le mot de passe dépasse 50 caractères";
+
         if(regdata.getPassword().length() < 8)
-            return "Le mot de passe est trop court";
+            errors.setPassword("Inférieur à 8 caractères");
+        if(regdata.getPassword().length() > 50)
+            errors.setPassword("Dépasse 50 caractères");
+        if(regdata.getPassword().replaceAll(" ", "").isEmpty())
+            errors.setPassword(ERROR_EMPTY);
 
-        if(SQLManager.UserExists(regdata))
-            return "Email ou Pseudonyme déjà enregistré";
+        if(!errors.hasErrors()){
+            if(SQLManager.UserExists(regdata))
+                errors.setError("Email ou Pseudonyme déjà enregistré");
+        }
 
-        return OK;
+        return errors;
     }
 
 
-    public static String check_login(LoginData loginData, HttpSession httpSession){
-        if(loginData == null) return "Erreur Inconnue [LoginData]";
+    public static LoginData check_login(LoginData loginData, HttpSession httpSession){
+        Pattern pattern = Pattern.compile("[^0-9a-zA-Z_]");
 
-        if(loginData.getEmail().replaceAll(" ", "").isEmpty())
-            return "L'Email est vide";
+        LoginData errors = new LoginData();
+        if(loginData == null) {
+            errors.setError("Erreur Inconnue [LoginData]");
+            return errors;
+        }
+
+
         if(!VarUtils.isEmail(loginData.getEmail()))
-            return "Email Invalide";
+            errors.setEmail(ERROR_INVALID_INPUT);
         if(loginData.getEmail().length() > 32)
-            return "L'Email dépasse 32 caractères";
+            errors.setEmail("Dépasse 32 caractères");
+        if(loginData.getEmail().replaceAll(" ", "").isEmpty())
+            errors.setEmail(ERROR_EMPTY);
 
         if(loginData.getPassword().replaceAll(" ", "").isEmpty())
-            return "Le mot de passe est vide";
+            errors.setPassword(ERROR_EMPTY);
 
-        Account resp = SQLManager.loginUser(loginData);
-        if(resp == null)
-            return "Échec de l'Authentification";
+        if(!errors.hasErrors()){
+            Account resp = SQLManager.loginUser(loginData);
+            if(resp == null) errors.setError("Échec de l'Authentification");
+            else httpSession.setAttribute("account", resp); // SESSION OPEN
+        }
 
-        httpSession.setAttribute("account", resp);
-        return OK;
+        return errors;
     }
 
 }

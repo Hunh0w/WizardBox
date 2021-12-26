@@ -1,5 +1,6 @@
-package fr.hunh0w.wizardbox.internal.managers;
+package fr.hunh0w.wizardbox.internal.session.managers;
 
+import fr.hunh0w.wizardbox.internal.managers.SQLManager;
 import fr.hunh0w.wizardbox.internal.session.objects.Account;
 
 import javax.servlet.http.HttpSession;

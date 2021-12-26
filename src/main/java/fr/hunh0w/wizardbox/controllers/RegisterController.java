@@ -9,26 +9,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
-
 @Controller
 public class RegisterController {
 
     /* REGISTER */
     @GetMapping("/register")
     public String getRegister(Model model){
-        List<String> users = SQLManager.getUsers();
-        model.addAttribute("users", users);
+        model.addAttribute("error", new RegisterData());
         return "register";
     }
 
     @PostMapping("/register")
     public String register_postBody(@ModelAttribute("regdata") RegisterData regdata, Model model) {
-        String result = AuthManager.check_register(regdata);
-        if(result.equals(AuthManager.OK)){
+        RegisterData result = AuthManager.check_register(regdata);
+        if(!result.hasErrors()){
             String resp = SQLManager.registerUser(regdata);
             if(resp == null) return "redirect:/login";
-            result = resp;
+            result.setError(resp);
         }
 
         model.addAttribute("error", result);

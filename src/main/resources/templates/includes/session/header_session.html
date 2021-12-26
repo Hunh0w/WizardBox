@@ -2,6 +2,14 @@
     <button onclick="toAuth()">Authentification</button>
     <button onclick="toReg()">Inscription</button>
 </div>
-<div th:fragment="logged" class="buttons">
-    <button>LOGGED</button>
+<div th:fragment="logged">
+    <div id="header_profile_deroulant">
+        <div class="header_menu_main">
+            <span th:text="${session.account.getPseudo()}"></span>
+        </div>
+        <div class="header_menu_content">
+            <span><a href="#">Paramètres</a></span>
+            <span><a href="/logout">Déconnexion</a></span>
+        </div>
+    <div/>
 </div>

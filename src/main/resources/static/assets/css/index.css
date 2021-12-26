@@ -1,14 +1,19 @@
-#background {
-    background-image: url('../imgs/bg2.jpg');
-    background-size: cover;
-    padding-bottom: 300px;
-    width: 100%;
-}
-
 #content #overview #stats div.grade h1 {
     color: rgb(141, 0, 0);
     font-weight: bold;
 }
+
+#mainnew div.mainnew h1 span.typedtext a {
+    color: inherit;
+}
+
+.colorjsintextvsc {
+    color: #888888;
+}
+.colorjsmethodvsc {
+    color: rgb(141, 0, 0);
+}
+
 
 @media screen and (min-width: 1000px){
 

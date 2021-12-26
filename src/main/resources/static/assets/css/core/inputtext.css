@@ -51,3 +51,25 @@
 .form__field:required, .form__field:invalid {
     box-shadow: none;
 }
+
+/* errors */
+.inputerror {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #991111, #ef6c38);
+    border-image-slice: 1;
+}
+.inputerror ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    font-size: 1rem;
+    color: #991111;
+    font-weight: 700;
+}
+.inputerror:placeholder-shown ~ .form__label {
+    font-size: 1rem;
+    cursor: default;
+    top: 0;
+}
