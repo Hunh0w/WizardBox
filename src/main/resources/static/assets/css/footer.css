@@ -13,7 +13,7 @@ footer.footer-distributed {
     font: normal 16px sans-serif;
     padding: 25px 50px;
     border-top: 1px solid rgb(141, 0, 0);
-    position: fixed;
+    position: relative;
     left: 0;
     bottom: 0;
 }

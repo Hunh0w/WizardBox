@@ -83,7 +83,7 @@ header > .titlehead > h1 {
 
     #header_profile_deroulant:hover > div.header_menu_content {
         display: flex;
-        position: fixed;
+        position: absolute;
         flex-direction: column;
         justify-content: center;
     }
@@ -187,7 +187,7 @@ header > .titlehead > h1 {
 
     #header_profile_deroulant:hover > div.header_menu_content {
         display: flex;
-        position: fixed;
+        position: absolute;
         flex-direction: column;
         justify-content: center;
         align-items: center;
