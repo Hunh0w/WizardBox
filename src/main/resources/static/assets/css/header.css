@@ -116,7 +116,7 @@ header > .titlehead > h1 {
 
     header {
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.5);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -215,7 +215,7 @@ header > .titlehead > h1 {
 
     header {
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.5);
         display: flex;
         align-items: center;
         flex-direction: column;

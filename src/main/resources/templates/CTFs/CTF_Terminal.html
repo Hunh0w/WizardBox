@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+
+        <div th:replace="includes/globalhead"></div>
+
+        <!-- HEADER-->
+        <link href="/assets/css/header.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+        <!-- CONTENT -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@4.16.0/css/xterm.css" />
+        <script src="https://cdn.jsdelivr.net/npm/xterm@4.16.0/lib/xterm.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.5.0/lib/xterm-addon-fit.js"></script>
+        <link rel="stylesheet" href="/assets/css/ctf_terminal.css" />
+
+        <!-- FOOTER -->
+        <link href="/assets/css/footer.css" rel="stylesheet" />
+
+    </head>
+    <body>
+
+        <div class="loader_container">
+            <div class="loader">CHARGEMENT...</div>
+        </div>
+
+        <div id="background">
+
+            <div th:replace="includes/header :: header"></div>
+
+            <!-- CONTENT -->
+            <div id="terminal_container">
+                <div id="terminal-container">
+                    <div id="terminal"></div>
+                </div>
+            </div>
+            <span th:text="${token}" id="token" hidden></span>
+
+        </div>
+
+        <div th:replace="includes/footer :: footer"></div>
+
+        <!-- JS LIBS -->
+        <div th:replace="includes/scripts"></div>
+
+        <script type="module" src="/assets/js/ctf_terminal.js"></script>
+    </body>
+</html>
