@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class WizardMessage implements Serializable {
 
+    private static final long serialVersionUID = -3871598759338521948L;
+
     private final byte[] data;
 
     public WizardMessage(byte[] data){

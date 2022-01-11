@@ -3,6 +3,8 @@ var fit = new FitAddon.FitAddon();
 var currentline = "";
 var resize_bas = false;
 const token = $("#token").text();
+var connected = false;
+var socket;
 
 term.loadAddon(fit);
 term.open(document.getElementById('terminal'));
@@ -25,10 +27,20 @@ $(window).resize(function(){
 */
 
 printDef();
-
 term.onKey(function(key, evt){
     let code = (key.key).charCodeAt(0);
     if(code == 27 || code == 9) return;
+
+    if (key.domEvent.code === 'KeyC'){
+        if (key.domEvent.ctrlKey) {
+            socket.send("CMD::"+utf8_to_b64(String.fromCharCode(0x03)));
+            return;
+        }
+    } else if (key.domEvent.code === 'KeyV'){
+        if (key.domEvent.ctrlKey) {
+
+        }
+    }
     //console.log(key.key);
     //console.log("char code:"+code);
     if(code == 127){
@@ -39,9 +51,13 @@ term.onKey(function(key, evt){
     }
     if(code == 13){
         term.write("\r\n");
-        term.write("Line: '"+currentline+"'");
-        term.write("\r\n");
-        printDef();
+        if(connected){
+            socket.send("CMD::"+utf8_to_b64(currentline));
+        }else {
+            term.write("Vous n'êtes pas connecté");
+            term.write("\r\n");
+            printDef();
+        }
         currentline = "";
         return;
     }
@@ -51,7 +67,7 @@ term.onKey(function(key, evt){
 
 
 function initWSocket(){
-    let socket = new WebSocket("ws://127.0.0.1:3000");
+    socket = new WebSocket("ws://127.0.0.1:3000");
     socket.onopen = function(e) {
         console.log("[WS Server] Connection established");
         socket.send("TOKEN::"+token);
@@ -59,6 +75,20 @@ function initWSocket(){
 
     socket.onmessage = function(event) {
         console.log(`[WS Server] MESSAGE: ${event.data}`);
+        if(event.data == "AUTH_SUCCESS"){
+            socket.send("CTF::1");
+        }else if(event.data.startsWith("CTF_LINKED")) {
+            connected = true;
+        }else if(event.data == "CMDFIN"){
+            term.write("\r\n");
+            printDef();
+            term.write(currentline);
+        }else if(event.data.startsWith("CMDRESP")){
+            let data = event.data.split("::")[1];
+            data = b64_to_utf8(data);
+            term.write("\r\n");
+            term.write(data);
+        }
     };
     socket.onerror = function(error) {
         console.log(`[WS Server] ERROR: ${error.message}`);
@@ -72,4 +102,11 @@ function reloadTerm(){
 }
 function printDef(){
     term.write('\x1B[31mWizardBox\x1B[0m@\x1B[33mCTF\x1B[0m -> ');
+}
+function utf8_to_b64( str ) {
+    return window.btoa(unescape(encodeURIComponent( str )));
+}
+
+function b64_to_utf8( str ) {
+    return decodeURIComponent(escape(window.atob( str )));
 }

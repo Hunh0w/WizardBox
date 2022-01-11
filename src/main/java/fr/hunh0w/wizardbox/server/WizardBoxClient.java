@@ -65,6 +65,7 @@ public class WizardBoxClient {
             System.out.println("[WB-Tunnel] Objet inconnu envoyé par : "+sock.getIPv4());
             return null;
         }catch(Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
