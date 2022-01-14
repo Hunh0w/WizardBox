@@ -67,7 +67,7 @@ term.onKey(function(key, evt){
 
 
 function initWSocket(){
-    socket = new WebSocket("ws://127.0.0.1:3000");
+    socket = new WebSocket("ws://194.199.227.237:8080");
     socket.onopen = function(e) {
         console.log("[WS Server] Connection established");
         socket.send("TOKEN::"+token);
@@ -80,6 +80,7 @@ function initWSocket(){
         }else if(event.data.startsWith("CTF_LINKED")) {
             connected = true;
         }else if(event.data == "CMDFIN"){
+            console.log("CMDFIN!!!!");
             term.write("\r\n");
             printDef();
             term.write(currentline);
