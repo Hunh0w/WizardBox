@@ -15,6 +15,18 @@ public class CTFController {
 
     @RequestMapping("/CTF")
     public String getTerminalPage(HttpSession session, Model model){
+        /*
+        if(session.getAttribute("account") == null)
+            return "redirect:/";
+
+         */
+
+        return "CTF_main";
+    }
+
+
+    /*
+    public String getTerminalPage(HttpSession session, Model model){
         if(session.getAttribute("account") == null)
             return "redirect:/";
         Account acc = (Account)session.getAttribute("account");
@@ -27,5 +39,6 @@ public class CTFController {
         model.addAttribute("token", token);
         return "CTFs/CTF_Terminal";
     }
+    */
 
 }

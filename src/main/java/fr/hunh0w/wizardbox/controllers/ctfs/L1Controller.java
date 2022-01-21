@@ -17,7 +17,7 @@ public class L1Controller {
     }
 
     @PostMapping("/CTF/L1")
-    public String postCTFL1(@RequestBody String req, Model model){
+    public String postCTFL1(@RequestBody String req, HttpSession session, Model model){
         String message_ret = null;
         try{
             String message = req.split("&")[1].split("=")[1];
