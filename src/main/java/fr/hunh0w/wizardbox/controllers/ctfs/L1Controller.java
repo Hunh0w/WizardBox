@@ -18,7 +18,18 @@ public class L1Controller {
 
     @PostMapping("/CTF/L1")
     public String postCTFL1(@RequestBody String req, Model model){
-        System.out.println("Request: "+req);
+        String message_ret = null;
+        try{
+            String message = req.split("&")[1].split("=")[1];
+            if(message.replaceAll(" ", "").isEmpty()){
+                message_ret = "Veuillez remplir le champ";
+            }else {
+                message_ret = "Bravo ! voici le flag: {WbFl4gnv1lCyeN0}";
+            }
+        }catch(ArrayIndexOutOfBoundsException ex){
+            message_ret = "Veuillez remplir le champ";
+        }
+        model.addAttribute("message_return", message_ret);
         return "CTFs/ctf_l1";
     }
 }

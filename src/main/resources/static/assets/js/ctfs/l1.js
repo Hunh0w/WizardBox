@@ -1,6 +1,6 @@
 $("#btnsubmit").click(function(){
     let form = $("form")[0];
     let btn = $("#btnsubmit");
-    if(btn.hasAttr("disabled")) return;
+    if(btn.attr("disabled") != null) return;
     form.submit();
 });

@@ -26,7 +26,7 @@
 
             <div id="container_form">
                 <div id="form_box">
-                    <h1>Épreuve 1 de Niveau Lycéen</h1>
+                    <h1 th:text="${message_return} == null?'Épreuve 1 de Niveau Lycéen':${message_return}"></h1>
                     <form method="POST" id="postform">
                         <input type="hidden" th:value="${_csrf.token}" name="_csrf" required/>
                         <div class="form__group field">
