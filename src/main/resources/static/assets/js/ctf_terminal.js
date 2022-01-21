@@ -67,10 +67,11 @@ term.onKey(function(key, evt){
 
 
 function initWSocket(){
-    socket = new WebSocket("ws://194.199.227.237:8080");
+    socket = new WebSocket("ws://192.168.1.18:8080");
     socket.onopen = function(e) {
         console.log("[WS Server] Connection established");
         socket.send("TOKEN::"+token);
+        console.log("send 'TOKEN::"+token+"'");
     };
 
     socket.onmessage = function(event) {

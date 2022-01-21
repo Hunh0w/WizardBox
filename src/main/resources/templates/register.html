@@ -33,7 +33,7 @@
                     <span th:text="${error.getError() == null} ? 'Authentification' : ${error.getError()}" th:style="${error.getError() == null} ? '' : 'color: #991111;'" id="titleauth"></span>
 
                     <form method="POST" th:object="${regdata}">
-                        <input type="hidden" th:value="${_csrf.token}" name="_csrf"/>
+                        <input type="hidden" th:value="${_csrf.token}" name="_csrf" required/>
                         <div class="form__group field" id="divnom">
                             <input th:class="${error.getNom() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" th:value="${regdata == null} ? '' : ${regdata.nom}" type="input" placeholder="Nom" name="nom" id='nom' required />
                             <label th:text="${error.getNom() == null} ? 'Nom' : ${error.getNom()}" for="nom" class="form__label"></label>

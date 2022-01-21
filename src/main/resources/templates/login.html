@@ -38,7 +38,7 @@
                 <div class="content">
                     <span th:text="${error.getError() == null} ? 'Authentification' : ${error.getError()}" th:style="${error.getError() == null} ? '' : 'color: #991111;'" id="titleauth"></span>
                     <form method="POST" th:object="${logindata}" id="loginform">
-                        <input type="hidden" th:value="${_csrf.token}" name="_csrf"/>
+                        <input type="hidden" th:value="${_csrf.token}" name="_csrf" required/>
                         <div class="form__group field">
                             <input th:class="${error.getEmail() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" type="input" placeholder="Email" name="email" id='email' required />
                             <label th:text="${error.getEmail() == null} ? 'Email' : ${error.getEmail()}" for="email" class="form__label"></label>
