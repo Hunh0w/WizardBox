@@ -5,6 +5,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.regex.Pattern;
 
 public class VarUtils {
@@ -56,6 +58,20 @@ public class VarUtils {
             ex.printStackTrace();
         }
         return obj;
+    }
+
+    public static int getInt(String str){
+        try{
+            int i = Integer.parseInt(str);
+            return i;
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return -1;
+    }
+
+    public static String toBase64(String str){
+        return Base64.getEncoder().encodeToString(str.getBytes(StandardCharsets.UTF_8));
     }
 
 }

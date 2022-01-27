@@ -1,11 +1,16 @@
 package fr.hunh0w.wizardbox.controllers;
 
+import fr.hunh0w.wizardbox.ctf.CTF;
+import fr.hunh0w.wizardbox.ctf.CTFManager;
 import fr.hunh0w.wizardbox.internal.objects.Rank;
 import fr.hunh0w.wizardbox.internal.session.objects.Account;
 import fr.hunh0w.wizardbox.server.WizardBoxClient;
+import fr.hunh0w.wizardbox.utils.VarUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.UUID;
@@ -14,14 +19,36 @@ import java.util.UUID;
 public class CTFController {
 
     @RequestMapping("/CTF")
-    public String getTerminalPage(HttpSession session, Model model){
+    public String getMainPage(HttpSession session, Model model){
         /*
         if(session.getAttribute("account") == null)
             return "redirect:/";
-
          */
 
+        model.addAttribute("ctfs", CTF.values());
         return "CTF_main";
+    }
+
+    @RequestMapping("/api/CTF/{id}")
+    @ResponseBody
+    public String getCTFInfo(HttpSession session, Model mod, @PathVariable String id){
+        int numid = VarUtils.getInt(id);
+        CTF ctf = CTFManager.getCTFById(numid);
+        if(ctf != null && numid != -1){
+            return ctf.toJson();
+        }
+        return "null";
+    }
+
+    @RequestMapping("/api/CTF/{id}/validate/{flag}")
+    @ResponseBody
+    public String getCTFInfo(HttpSession session, Model mod, @PathVariable String id, @PathVariable String flag){
+        int numid = VarUtils.getInt(id);
+        CTF ctf = CTFManager.getCTFById(numid);
+        if(ctf != null && numid != -1){
+            if(ctf.getFlag().equals(flag)) return "true";
+        }
+        return "false";
     }
 
 

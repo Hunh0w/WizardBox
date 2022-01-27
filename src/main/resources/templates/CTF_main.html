@@ -25,25 +25,61 @@
 
             <div th:replace="includes/header"></div>
 
-
-            <div id="navctfs">
-                <button>CTF L1 (Web)</button>
-                <button>CTF L1 (Web)</button>
-                <button>CTF L1 (Web)</button>
-                <button>CTF L1 (Web)</button>
-                <button>CTF L1 (Web)</button>
-                <button>CTF L1 (Web)</button>
-                <button>CTF L1 (Web)</button>
-                <button>CTF L1 (Web)</button>
-                <button>CTF L1 (Web)</button>
-                <button>CTF L1 (Web)</button>
+            <div id="container_global">
+                <div id="container_nav">
+                    <div id="navctfs">
+                        <th:block th:each="ctf : ${ctfs}">
+                            <button class="ctfbtn" th:text="${ctf.getName()} + ' ('+ ${ctf.getType().getName()} +')' " th:ctfId="${ctf.getId()}"></button>
+                        </th:block>
+                        <button>Bientôt</button>
+                        <button>Bientôt</button>
+                        <button>Bientôt</button>
+                        <button>Bientôt</button>
+                        <button>Bientôt</button>
+                        <button>Bientôt</button>
+                        <button>Bientôt</button>
+                    </div>
+                </div>
+                <div id="container_content" style="display: none;">
+                    <div class="wcontainer">
+                        <h1 id="ctftitle"></h1>
+                        <span id="ctfdesc"></span>
+                        <div class="btndiv" type="submit" id="btnsubmit1">
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                Participer
+                            </a>
+                        </div>
+                        <div class="content">
+                            <div id="flagform">
+                                <input type="hidden" th:value="${_csrf.token}" name="_csrf" required/>
+                                <div class="form__group field">
+                                    <input class="form__field" type="text" placeholder="Flag" name="flag" id='flag' required />
+                                    <label for="flag" class="form__label">Flag</label>
+                                </div>
+                                <div class="btndiv" type="submit" id="btnsubmit2">
+                                    <a>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        Valider
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
 
         <div th:replace="includes/footer :: footer"></div>
         <!-- JS LIBS -->
         <div th:replace="includes/scripts"></div>
+        <script src="/assets/js/ctf_ajax.js"></script>
 
     </body>
 </html>
