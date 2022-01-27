@@ -14,8 +14,10 @@ footer.footer-distributed {
     padding: 25px 50px;
     border-top: 1px solid rgb(141, 0, 0);
     position: relative;
-    left: 0;
-    bottom: 0;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
 }
 
 .footer-distributed .footer-left p {
