@@ -2,9 +2,6 @@ package fr.hunh0w.wizardbox.controllers;
 
 import fr.hunh0w.wizardbox.ctf.CTF;
 import fr.hunh0w.wizardbox.ctf.CTFManager;
-import fr.hunh0w.wizardbox.internal.objects.Rank;
-import fr.hunh0w.wizardbox.internal.session.objects.Account;
-import fr.hunh0w.wizardbox.server.WizardBoxClient;
 import fr.hunh0w.wizardbox.utils.VarUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.UUID;
 
 @Controller
 public class CTFController {

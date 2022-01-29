@@ -7,13 +7,13 @@ public enum CTF {
 
     L1(1, 15, "Web 1", Rank.LYCEEN, "/CTF/L1", "Le but de ce CTF est de réussir à envoyer le formulaire avec un message", "WbFl4gnv1lCyeN0");
 
-    private int id;
-    private int winpoints;
-    private String name;
-    private Rank type;
-    private String path;
-    private String description;
-    private String flag;
+    private final int id;
+    private final int winpoints;
+    private final String name;
+    private final Rank type;
+    private final String path;
+    private final String description;
+    private final String flag;
 
     CTF(int id, int winpoints, String name, Rank type, String path, String description, String flag) {
         this.name = name;

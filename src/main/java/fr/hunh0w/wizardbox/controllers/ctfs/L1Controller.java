@@ -1,17 +1,10 @@
 package fr.hunh0w.wizardbox.controllers.ctfs;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.hunh0w.wizardbox.ctf.CTF;
-import fr.hunh0w.wizardbox.ctf.CTFManager;
-import fr.hunh0w.wizardbox.utils.VarUtils;
-import net.minidev.json.JSONObject;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpSession;
 
