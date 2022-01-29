@@ -5,7 +5,7 @@ import fr.hunh0w.wizardbox.utils.VarUtils;
 
 public enum CTF {
 
-    L1(1, 15, "Web 1", Rank.LYCEEN, "/CTF/L1", "Le but de ce CTF est de réussir à envoyer le formulaire avec un message", "WbFl4gnv1lCyeN0");
+    L1(1, 15, "Web 1", Rank.LYCEEN, "/CTF/L1", "Le but de ce CTF est de réussir à envoyer le formulaire avec un message", "{WbFl4gnv1lCyeN0}");
 
     private final int id;
     private final int winpoints;

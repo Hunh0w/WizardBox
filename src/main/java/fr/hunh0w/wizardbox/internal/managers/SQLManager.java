@@ -92,6 +92,20 @@ public class SQLManager {
         return resp;
     }
 
+    public static void addPoints(Account account, int points){
+        try{
+            Connection con = Database.WIZARDBOX.getDatabase().getConnection();
+            PreparedStatement ps = con.prepareStatement("UPDATE users SET points=? WHERE id=?");
+            ps.setInt(1, points);
+            ps.setInt(2, account.getId());
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
     public static Account getAccount(String email){
         Account resp = null;
         try{
@@ -138,22 +152,9 @@ public class SQLManager {
         return resp;
     }
 
-    public static void addCTF_Flags(Account account, String... flags) {
+    public static void updateCTF_Flags(Account account) {
         try{
             ArrayList<String> list = account.getCtf_flags();
-            if(list == null) list = new ArrayList<String>();
-            else{
-                ArrayList<String> torm = new ArrayList<>();
-                for(String str1 : flags){
-                    for(String str2 : list){
-                        if(str1.equalsIgnoreCase(str2)) torm.add(str2);
-                    }
-                }
-                for(String str : torm) list.remove(str);
-            }
-            list.addAll(Arrays.asList(flags));
-
-            account.setCtf_flags(list);
             byte[] ba = VarUtils.toByteArray(list);
             if(ba == null) return;
 
@@ -172,22 +173,9 @@ public class SQLManager {
         }
     }
 
-    public static void addChall_Flags(Account account, String... flags) {
+    public static void updateChall_Flags(Account account) {
         try{
             ArrayList<String> list = account.getChall_flags();
-            if(list == null) list = new ArrayList<String>();
-            else{
-                ArrayList<String> torm = new ArrayList<>();
-                for(String str1 : flags){
-                    for(String str2 : list){
-                        if(str1.equalsIgnoreCase(str2)) torm.add(str2);
-                    }
-                }
-                for(String str : torm) list.remove(str);
-            }
-            list.addAll(Arrays.asList(flags));
-
-            account.setChall_flags(list);
             byte[] ba = VarUtils.toByteArray(list);
             if(ba == null) return;
 

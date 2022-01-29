@@ -11,12 +11,12 @@ public class SessionManager {
 
     public static final int refresh_cooldown = 3; // seconds
 
-    public static void refreshSession(HttpSession httpSession){
+    public static void refreshSession(HttpSession httpSession, int cooldown){
         if(httpSession.getAttribute("account") == null) return;
         Account current = (Account) httpSession.getAttribute("account");
 
         Date now = new Date();
-        now.setSeconds(now.getSeconds() - refresh_cooldown);
+        now.setSeconds(now.getSeconds() - cooldown);
         Date init_date = current.getInit_date();
         if(init_date.getTime() >= now.getTime()) return;
 
@@ -24,11 +24,6 @@ public class SessionManager {
         if(email == null) throw new NullPointerException("Email is null [Account]");
         Account acc = SQLManager.getAccount(email);
         if(acc == null) throw new NullPointerException("new Account is null [Refresh]");
-
-        Random rd = new Random();
-        int rdint = rd.nextInt(Integer.MAX_VALUE);
-        String flag = "CTF-"+rdint;
-        SQLManager.addCTF_Flags(acc, flag);
 
         httpSession.setAttribute("account", acc);
     }

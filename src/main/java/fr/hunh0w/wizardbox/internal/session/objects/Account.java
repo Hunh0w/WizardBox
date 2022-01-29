@@ -1,5 +1,8 @@
 package fr.hunh0w.wizardbox.internal.session.objects;
 
+import fr.hunh0w.wizardbox.ctf.CTF;
+import fr.hunh0w.wizardbox.internal.managers.SQLManager;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -88,6 +91,28 @@ public class Account {
 
     public void setChall_flags(ArrayList<String> chall_flags) {
         this.chall_flags = chall_flags;
+    }
+
+    public boolean addCtf_Flag(int id){
+        String reg = "CTF_"+id;
+        if(ctf_flags.contains(reg)) return false;
+        ctf_flags.add(reg);
+        SQLManager.updateCTF_Flags(this);
+        return true;
+    }
+
+    public boolean addCtf_Chall(int id){
+        String reg = "CHALL_"+id;
+        if(chall_flags.contains(reg)) return false;
+        chall_flags.add(reg);
+        SQLManager.updateChall_Flags(this);
+        return true;
+    }
+
+    public boolean hasValidateCTF(CTF ctf){
+        for(String str : ctf_flags)
+            if(str.equals("CTF_"+ctf.getId())) return true;
+        return false;
     }
 
     @Override

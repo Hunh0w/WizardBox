@@ -12,7 +12,7 @@ public class HomeController {
     /* ACCUEIL */
     @GetMapping("/")
     public String getHome(HttpSession httpSession){
-        SessionManager.refreshSession(httpSession);
+        SessionManager.refreshSession(httpSession, SessionManager.refresh_cooldown);
         return "index";
     }
 

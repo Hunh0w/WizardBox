@@ -1,9 +1,8 @@
 #background {
     background-image: url('/assets/imgs/bg2.jpg');
     background-size: cover;
-    padding-bottom: 300px;
+    padding-bottom: 400px;
     width: 100%;
-    height: 100%;
 }
 body,html{
     background-color: black;
