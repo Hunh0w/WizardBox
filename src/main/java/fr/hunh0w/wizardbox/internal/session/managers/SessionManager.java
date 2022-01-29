@@ -5,7 +5,6 @@ import fr.hunh0w.wizardbox.internal.session.objects.Account;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
-import java.util.Random;
 
 public class SessionManager {
 

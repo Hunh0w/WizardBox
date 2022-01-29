@@ -34,7 +34,7 @@ $("#btnsubmit2").click(function(){
             $("#ctftitle").attr("style", "color: green;");
         }else if(num == -2){
             $("#ctftitle").text("Ce CTF est déjà validé");
-            $("#ctftitle").attr("style", "color: green;");;
+            $("#ctftitle").attr("style", "color: green;");
         }else if(num == 0){
             $("#ctftitle").text("Flag Incorrect !");
             $("#ctftitle").attr("style", "color: red;");
