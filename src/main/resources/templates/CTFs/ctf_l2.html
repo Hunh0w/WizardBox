@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <div th:replace="includes/globalhead"></div>
+    <title>Lycéen | Niveau 2</title>
+
+    <!-- HEADER-->
+    <link href="/assets/css/header.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <!-- CONTENT -->
+    <link href="/assets/css/core/inputtext.css" rel="stylesheet" />
+    <link href="/assets/css/core/buttons.css" rel="stylesheet" />
+
+    <!-- FOOTER -->
+    <link href="/assets/css/footer.css" rel="stylesheet" />
+</head>
+<body>
+<div class="loader_container">
+    <div class="loader">CHARGEMENT...</div>
+</div>
+
+<div id="background">
+
+    <div th:replace="includes/header"></div>
+
+    <div id="container_form">
+        <div id="form_box">
+            <h1 th:text="${message_return} == null?'Épreuve 2 de Niveau Lycéen':${message_return}"></h1>
+            <form method="POST" id="postform">
+                <input type="hidden" th:value="${_csrf.token}" name="_csrf" required/>
+                <div class="form__group field">
+                    <input class="form__field" type="input" placeholder="Identifiant" name="identifiant" id='identifiant' required />
+                    <label for="identifiant" class="form__label">Identifiant</label>
+                </div>
+                <div class="form__group field">
+                    <input class="form__field" type="input" placeholder="Mot de passe" name="password" id='password' required />
+                    <label for="password" class="form__label">Mot de passe</label>
+                </div>
+                <div class="btndiv" type="submit" id="btnsubmit">
+                    <a>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Envoyer
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="includes/footer :: footer"></div>
+<!-- JS LIBS -->
+<div th:replace="includes/scripts"></div>
+<script src="/assets/js/ctfs/l2.js"></script>
+
+<style>
+    #container_form {
+        margin-top: 60px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #form_box {
+        background-color: rgba(0,0,0,0.5);
+        width: 60%;
+        padding-top: 30px;
+        padding-inline: 30px;
+        padding-bottom: 70px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #postform {
+        width: 50%;
+    }
+
+    #btnsubmit{
+        margin-top: 30px;
+        cursor: pointer;
+    }
+
+    #form_box > h1 {
+        color: white;
+    }
+
+    #message[disabled] {
+        background-color: rgba(0,0,0,0.4);
+        border-inline: 1px solid rgb(147, 30, 49);
+        text-decoration: line-through;
+    }
+</style>
+</body>
+</html>
