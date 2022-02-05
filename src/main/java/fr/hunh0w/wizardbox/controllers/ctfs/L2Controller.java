@@ -1,6 +1,7 @@
 package fr.hunh0w.wizardbox.controllers.ctfs;
 
 import fr.hunh0w.wizardbox.ctf.CTF;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpSession;
 
+@Controller
 public class L2Controller {
 
     private static final CTF ctf = CTF.L2;
@@ -26,7 +28,8 @@ public class L2Controller {
         String message_ret = null;
         try{
             String identifiant = req.split("&")[1].split("=")[1];
-            String password = req.split("&")[2].split("=")[2];
+            String password = req.split("&")[2].split("=")[1];
+
             if(identifiant.replaceAll(" ", "").isEmpty() || password.replaceAll(" ", "").isEmpty()){
                 message_ret = "Identifiant / Mot de passe Manquant";
             }else if(identifiant.equals("ADM1N83") && password.equals("WIZARD38673")){
