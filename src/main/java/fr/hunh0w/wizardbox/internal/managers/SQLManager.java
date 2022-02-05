@@ -95,7 +95,7 @@ public class SQLManager {
         try{
             Connection con = Database.WIZARDBOX.getDatabase().getConnection();
             PreparedStatement ps = con.prepareStatement("UPDATE users SET points=? WHERE id=?");
-            ps.setInt(1, points);
+            ps.setInt(1, points+account.getPoints());
             ps.setInt(2, account.getId());
             ps.executeUpdate();
             ps.close();

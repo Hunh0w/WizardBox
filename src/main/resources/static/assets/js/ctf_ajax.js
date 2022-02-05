@@ -32,6 +32,7 @@ $("#btnsubmit2").click(function(){
         if(num > 0){
             $("#ctftitle").text("+"+data+" points !");
             $("#ctftitle").attr("style", "color: green;");
+            location.reload();
         }else if(num == -2){
             $("#ctftitle").text("Ce CTF est déjà validé");
             $("#ctftitle").attr("style", "color: green;");

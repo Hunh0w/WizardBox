@@ -24,8 +24,6 @@ public class CTFController {
     public String getMainPage(HttpSession session, Model model){
         if(session.getAttribute("account") == null)
             return "redirect:/";
-
-
         model.addAttribute("ctfs", CTF.values());
         return "CTF_main";
     }
