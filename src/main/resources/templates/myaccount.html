@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://thymeleaf.org">
+<head>
+    <title>WizardBox | Authentification</title>
+
+    <div th:replace="includes/globalhead"></div>
+
+    <!-- HEADER-->
+    <link href="/assets/css/header.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+
+    <!-- CONTENT -->
+    <link href="/assets/css/myaccount.css" rel="stylesheet" />
+    <link href="/assets/css/core/inputtext.css" rel="stylesheet" />
+    <link href="/assets/css/core/buttons.css" rel="stylesheet" />
+
+    <!-- FOOTER -->
+    <link href="/assets/css/footer.css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="loader_container">
+    <div class="loader">CHARGEMENT...</div>
+</div>
+
+<div id="background">
+
+    <div th:replace="includes/header"></div>
+
+    <div id="messageblock" th:with="formdata=${formdata}">
+        <span th:if="${formdata == null}"></span>
+        <span th:unless="${true}" th:text="${formdata}"></span>
+    </div>
+
+    <!-- CONTENT -->
+    <div id="content">
+        <div class="content">
+            <span th:text="${error.getError() == null} ? 'Mon Compte | '+${session.account.getPseudo()} : ${error.getError()}" th:style="${error.getError() == null} ? '' : 'color: #991111;'" id="titleauth"></span>
+            <form method="POST" th:object="${accountdata}" id="accountform">
+                <input type="hidden" th:value="${_csrf.token}" name="_csrf" required/>
+                <div class="form__group field" id="divnom">
+                    <input th:class="${error.getNom() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" th:value="${accountdata == null} ? '' : ${accountdata.nom}" type="input" th:placeholder="${session.account.getNom()}" name="nom" id='nom' required />
+                    <label th:text="${error.getNom() == null} ? ${session.account.getNom()} : ${error.getNom()}" for="nom" class="form__label"></label>
+                </div>
+                <div class="form__group field" id="divprenom">
+                    <input th:class="${error.getPrenom() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" th:value="${accountdata == null} ? '' : ${accountdata.prenom}" type="input" th:placeholder="${session.account.getPrenom()}" name="prenom" id='prenom' required />
+                    <label th:text="${error.getPrenom() == null} ? ${session.account.getPrenom()} : ${error.getPrenom()}" for="prenom" class="form__label"></label>
+                </div>
+                <div class="form__group field" id="divpseudo">
+                    <input th:class="${error.getPseudo() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" th:value="${accountdata == null} ? '' : ${accountdata.pseudo}" type="input" th:placeholder="${session.account.getPseudo()}" name="pseudo" id='pseudo' required />
+                    <label th:text="${error.getPseudo() == null} ? ${session.account.getPseudo()} : ${error.getPseudo()}" for="pseudo" class="form__label"></label>
+                </div>
+                <div class="form__group field" id="divmail">
+                    <input th:class="${error.getEmail() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" th:value="${accountdata == null} ? '' : ${accountdata.email}" type="input" th:placeholder="${session.account.getEmail()}" name="email" id='email' required />
+                    <label th:text="${error.getEmail() == null} ? ${session.account.getEmail()} : ${error.getEmail()}" for="email" class="form__label"></label>
+                </div>
+                <div class="form__group field" id="divmdp">
+                    <input th:class="${error.getPassword() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" type="password" class="form__field" placeholder="Mot de passe" name="password" id='password' required />
+                    <label th:text="${error.getPassword() == null} ? 'Mot de passe' : ${error.getPassword()}" for="password" class="form__label"></label>
+                </div>
+                <div class="form__group field" id="divmdpconf">
+                    <input type="password" class="form__field" placeholder="Confirmation du Mot de passe" name="password_confirm" id='password_confirm' required />
+                    <label for="password_confirm" class="form__label">Confirmation du mot de passe</label>
+                </div>
+                <div class="btndiv" type="submit" id="btnsubmit">
+                    <a>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Enregistrer
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="includes/footer :: footer"></div>
+<div th:replace="includes/scripts"></div>
+
+<script src="/assets/js/next_input_enter.js"></script>
+<script src="/assets/js/submit.js"></script>
+<script src="/assets/js/inputtext.js"></script>
+
+</body>
+</html>
