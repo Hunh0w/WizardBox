@@ -8,18 +8,18 @@ import java.util.Date;
 
 public class Account {
 
-    private final int id;
-    private final String email;
-    private final String pseudo;
-    private final String nom;
-    private final String prenom;
-    private final String activity;
-    private final int points;
-    private final int rank;
-    private ArrayList<String> ctf_flags = new ArrayList<>();
-    private ArrayList<String> chall_flags = new ArrayList<>();
+    protected final int id;
+    protected final String email;
+    protected final String pseudo;
+    protected final String nom;
+    protected final String prenom;
+    protected final String activity;
+    protected final int points;
+    protected final int rank;
+    protected ArrayList<String> ctf_flags = new ArrayList<>();
+    protected ArrayList<String> chall_flags = new ArrayList<>();
 
-    private final Date init_date = new Date();
+    protected final Date init_date = new Date();
 
     public Account(int id, String email, String pseudo, String nom, String prenom, String activity, int points, int rank) {
         this.id = id;

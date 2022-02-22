@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class SQLManager {
 
@@ -193,5 +194,68 @@ public class SQLManager {
         }
     }
 
+    public static boolean checkUserPasswd(int id, String password){
+        String hashpass = CryptoManager.sha512_Hash(password);
+        try{
+            Connection con = Database.WIZARDBOX.getDatabase().getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT id FROM users WHERE id=? AND password=?;");
+            ps.setInt(1, id);
+            ps.setString(2, hashpass);
+            ResultSet rs = ps.executeQuery();
+            boolean exists = rs.next();
+            ps.close();
+            con.close();
+            return exists;
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean checkPseudoExists(String pseudo){
+        try{
+            Connection con = Database.WIZARDBOX.getDatabase().getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT id FROM users WHERE LOWER(pseudo)=?;");
+            ps.setString(1, pseudo.toLowerCase(Locale.ROOT));
+            ResultSet rs = ps.executeQuery();
+            boolean exists = rs.next();
+            ps.close();
+            con.close();
+            return exists;
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean checkEmailExists(String email){
+        try{
+            Connection con = Database.WIZARDBOX.getDatabase().getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT id FROM users WHERE LOWER(email)=?;");
+            ps.setString(1, email.toLowerCase(Locale.ROOT));
+            ResultSet rs = ps.executeQuery();
+            boolean exists = rs.next();
+            ps.close();
+            con.close();
+            return exists;
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public static void changeString(String value, String attributetype, int id){
+        try{
+            Connection con = Database.WIZARDBOX.getDatabase().getConnection();
+            PreparedStatement ps = con.prepareStatement("UPDATE users SET "+attributetype+"=? WHERE id=?;");
+            ps.setString(1, value);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
 
 }

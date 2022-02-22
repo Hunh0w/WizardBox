@@ -78,6 +78,10 @@ div#content form .btndiv {
     }
 }
 
+#divmdp {
+    margin-top: 60px;
+}
+
 #btnsubmit {
     cursor: pointer;
 }

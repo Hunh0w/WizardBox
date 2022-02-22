@@ -39,29 +39,21 @@
             <span th:text="${error.getError() == null} ? 'Mon Compte | '+${session.account.getPseudo()} : ${error.getError()}" th:style="${error.getError() == null} ? '' : 'color: #991111;'" id="titleauth"></span>
             <form method="POST" th:object="${accountdata}" id="accountform">
                 <input type="hidden" th:value="${_csrf.token}" name="_csrf" required/>
-                <div class="form__group field" id="divnom">
-                    <input th:class="${error.getNom() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" th:value="${accountdata == null} ? '' : ${accountdata.nom}" type="input" th:placeholder="${session.account.getNom()}" name="nom" id='nom' required />
-                    <label th:text="${error.getNom() == null} ? ${session.account.getNom()} : ${error.getNom()}" for="nom" class="form__label"></label>
-                </div>
-                <div class="form__group field" id="divprenom">
-                    <input th:class="${error.getPrenom() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" th:value="${accountdata == null} ? '' : ${accountdata.prenom}" type="input" th:placeholder="${session.account.getPrenom()}" name="prenom" id='prenom' required />
-                    <label th:text="${error.getPrenom() == null} ? ${session.account.getPrenom()} : ${error.getPrenom()}" for="prenom" class="form__label"></label>
-                </div>
                 <div class="form__group field" id="divpseudo">
-                    <input th:class="${error.getPseudo() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" th:value="${accountdata == null} ? '' : ${accountdata.pseudo}" type="input" th:placeholder="${session.account.getPseudo()}" name="pseudo" id='pseudo' required />
-                    <label th:text="${error.getPseudo() == null} ? ${session.account.getPseudo()} : ${error.getPseudo()}" for="pseudo" class="form__label"></label>
+                    <input th:class="${error.getPseudo() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" th:value="${accountdata == null} ? '' : ${accountdata.pseudo}" type="input" th:placeholder="'Pseudo (' + ${session.account.getPseudo()} + ')'" name="pseudo" id='pseudo' required />
+                    <label th:text="${error.getPseudo() == null} ? 'Pseudo (' + ${session.account.getPseudo()} + ')' : ${error.getPseudo()}" for="pseudo" class="form__label"></label>
                 </div>
                 <div class="form__group field" id="divmail">
-                    <input th:class="${error.getEmail() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" th:value="${accountdata == null} ? '' : ${accountdata.email}" type="input" th:placeholder="${session.account.getEmail()}" name="email" id='email' required />
-                    <label th:text="${error.getEmail() == null} ? ${session.account.getEmail()} : ${error.getEmail()}" for="email" class="form__label"></label>
+                    <input th:class="${error.getEmail() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" th:value="${accountdata == null} ? '' : ${accountdata.email}" type="input" th:placeholder="'E-Mail (' + ${session.account.getEmail()} + ')'" name="email" id='email' required />
+                    <label th:text="${error.getEmail() == null} ? 'E-Mail (' + ${session.account.getEmail()} + ')' : ${error.getEmail()}" for="email" class="form__label"></label>
                 </div>
                 <div class="form__group field" id="divmdp">
                     <input th:class="${error.getPassword() == null} ? 'form\_\_field' : 'form\_\_field inputerror'" type="password" class="form__field" placeholder="Mot de passe" name="password" id='password' required />
                     <label th:text="${error.getPassword() == null} ? 'Mot de passe' : ${error.getPassword()}" for="password" class="form__label"></label>
                 </div>
                 <div class="form__group field" id="divmdpconf">
-                    <input type="password" class="form__field" placeholder="Confirmation du Mot de passe" name="password_confirm" id='password_confirm' required />
-                    <label for="password_confirm" class="form__label">Confirmation du mot de passe</label>
+                    <input type="password" class="form__field" placeholder="Nouveau Mot de passe" name="new_password" id='new_password' required />
+                    <label for="new_password" class="form__label">Nouveau mot de passe</label>
                 </div>
                 <div class="btndiv" type="submit" id="btnsubmit">
                     <a>
@@ -81,7 +73,7 @@
 <div th:replace="includes/scripts"></div>
 
 <script src="/assets/js/next_input_enter.js"></script>
-<script src="/assets/js/submit.js"></script>
+<script src="/assets/js/myaccount.js"></script>
 <script src="/assets/js/inputtext.js"></script>
 
 </body>
