@@ -2,13 +2,9 @@ package fr.hunh0w.wizardbox.controllers;
 
 import fr.hunh0w.wizardbox.challenges.ChallManager;
 import fr.hunh0w.wizardbox.challenges.Challenge;
-import fr.hunh0w.wizardbox.ctf.CTF;
-import fr.hunh0w.wizardbox.ctf.CTFManager;
 import fr.hunh0w.wizardbox.internal.managers.SQLManager;
-import fr.hunh0w.wizardbox.internal.objects.Rank;
 import fr.hunh0w.wizardbox.internal.session.managers.SessionManager;
 import fr.hunh0w.wizardbox.internal.session.objects.Account;
-import fr.hunh0w.wizardbox.server.WizardBoxClient;
 import fr.hunh0w.wizardbox.utils.VarUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
