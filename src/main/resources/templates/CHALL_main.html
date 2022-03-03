@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <div th:replace="includes/globalhead"></div>
+    <title>WizardBox | Challenges</title>
+
+    <!-- HEADER-->
+    <link href="/assets/css/header.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <!-- CONTENT -->
+    <link href="/assets/css/core/inputtext.css" rel="stylesheet" />
+    <link href="/assets/css/core/buttons.css" rel="stylesheet" />
+    <link href="/assets/css/chall_main.css" rel="stylesheet" />
+
+    <!-- FOOTER -->
+    <link href="/assets/css/footer.css" rel="stylesheet" />
+</head>
+<body>
+<div class="loader_container">
+    <div class="loader">CHARGEMENT...</div>
+</div>
+
+<div id="background">
+
+    <div th:replace="includes/header"></div>
+
+    <div id="container_global">
+        <div id="container_nav">
+            <th:block th:each="chall : ${challs}">
+                <button class="ctfbtn" th:style="${session.account.hasValidateChall(chall)} ? 'color: green;':'color: red;'" th:text="${chall.getName()} + ' ('+ ${chall.getType().getName()} +')' " th:challId="${chall.getId()}"></button>
+            </th:block>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+            <button>Bientôt</button>
+        </div>
+        <div id="container_content" style="display: none;">
+            <h1 id="challtitle"></h1>
+            <span id="challdesc"></span>
+            <div class="btndiv" type="submit" id="btnsubmit1">
+                <a href="#" target="_blank">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Participer
+                </a>
+            </div>
+            <div class="content">
+                <div id="flagform">
+                    <input type="hidden" th:value="${_csrf.token}" name="_csrf" required/>
+                    <div class="form__group field">
+                        <input class="form__field" type="text" placeholder="Flag" name="flag" id='flag' required />
+                        <label for="flag" class="form__label">Flag</label>
+                    </div>
+                    <div class="btndiv" type="submit" id="btnsubmit2">
+                        <a>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Valider
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="includes/footer :: footer"></div>
+<!-- JS LIBS -->
+<div th:replace="includes/scripts"></div>
+<script src="/assets/js/chall_main.js"></script>
+
+</body>
+</html>

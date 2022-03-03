@@ -23,7 +23,7 @@ public class CTFController {
     @RequestMapping("/CTF")
     public String getMainPage(HttpSession session, Model model){
         if(session.getAttribute("account") == null)
-            return "redirect:/";
+            return "redirect:/login";
         model.addAttribute("ctfs", CTF.values());
         return "CTF_main";
     }
@@ -31,6 +31,8 @@ public class CTFController {
     @RequestMapping("/api/CTF/{id}")
     @ResponseBody
     public String getCTFInfo(HttpSession session, Model mod, @PathVariable String id){
+        if(session.getAttribute("account") == null)
+            return "redirect:/login";
         int numid = VarUtils.getInt(id);
         CTF ctf = CTFManager.getCTFById(numid);
         if(ctf != null && numid != -1){
@@ -65,7 +67,7 @@ public class CTFController {
     @RequestMapping("/CTF/terminal")
     public String getTerminalPage(HttpSession session, Model model){
         if(session.getAttribute("account") == null)
-            return "redirect:/";
+            return "redirect:/login";
         Account acc = (Account)session.getAttribute("account");
         if(acc.getRank() != Rank.ADMIN.getId())
             return "redirect:/";

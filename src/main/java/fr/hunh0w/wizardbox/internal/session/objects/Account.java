@@ -1,5 +1,6 @@
 package fr.hunh0w.wizardbox.internal.session.objects;
 
+import fr.hunh0w.wizardbox.challenges.Challenge;
 import fr.hunh0w.wizardbox.ctf.CTF;
 import fr.hunh0w.wizardbox.internal.managers.SQLManager;
 
@@ -112,6 +113,12 @@ public class Account {
     public boolean hasValidateCTF(CTF ctf){
         for(String str : ctf_flags)
             if(str.equals("CTF_"+ctf.getId())) return true;
+        return false;
+    }
+
+    public boolean hasValidateChall(Challenge chall){
+        for(String str : chall_flags)
+            if(str.equals("CHALL_"+chall.getId())) return true;
         return false;
     }
 

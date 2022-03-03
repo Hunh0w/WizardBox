@@ -19,7 +19,7 @@ public class MyAccountController {
     @GetMapping("/myaccount")
     public String getMyAccount(HttpSession session, Model model){
         if(session.getAttribute("account") == null)
-            return "redirect:/";
+            return "redirect:/login";
         model.addAttribute("error", new AccountData());
         return "myaccount";
     }
@@ -27,7 +27,7 @@ public class MyAccountController {
     @PostMapping("/myaccount")
     public String postMyAccount(@ModelAttribute("accountdata") AccountData accountData, HttpSession session, Model model){
         if(session.getAttribute("account") == null)
-            return "redirect:/";
+            return "redirect:/login";
 
         System.out.println(accountData.toString());
 

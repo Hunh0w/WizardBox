@@ -17,14 +17,14 @@ public class L2Controller {
     @GetMapping("/CTF/L2")
     public String getCTFL1(HttpSession session, Model model){
         if(session.getAttribute("account") == null)
-            return "redirect:/";
+            return "redirect:/login";
         return "CTFs/ctf_l2";
     }
 
     @PostMapping("/CTF/L2")
     public String postCTFL1(@RequestBody String req, HttpSession session, Model model){
         if(session.getAttribute("account") == null)
-            return "redirect:/";
+            return "redirect:/login";
         String message_ret = null;
         try{
             String identifiant = req.split("&")[1].split("=")[1];
