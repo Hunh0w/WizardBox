@@ -106,12 +106,12 @@ public class SQLManager {
         }
     }
 
-    public static Account getAccount(String email){
+    public static Account getAccount(int id){
         Account resp = null;
         try{
             Connection con = Database.WIZARDBOX.getDatabase().getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE email=?");
-            ps.setString(1, email);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE id=?");
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             resp = getAccount(rs);
             ps.close();

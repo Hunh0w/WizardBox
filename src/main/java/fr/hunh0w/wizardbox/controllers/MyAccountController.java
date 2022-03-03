@@ -1,6 +1,7 @@
 package fr.hunh0w.wizardbox.controllers;
 
 import fr.hunh0w.wizardbox.internal.authentication.crypto.CryptoManager;
+import fr.hunh0w.wizardbox.internal.managers.FiltersManager;
 import fr.hunh0w.wizardbox.internal.managers.SQLManager;
 import fr.hunh0w.wizardbox.internal.session.objects.Account;
 import fr.hunh0w.wizardbox.internal.session.objects.AccountData;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.Filter;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -29,12 +31,10 @@ public class MyAccountController {
         if(session.getAttribute("account") == null)
             return "redirect:/login";
 
-        System.out.println(accountData.toString());
-
-        Account account = (Account)session.getAttribute("account");
         AccountData errors = new AccountData();
+        Account acc = (Account)session.getAttribute("account");
 
-        int id = accountData.getId();
+        int id = acc.getId();
         String pseudo = accountData.getPseudo();
         String email = accountData.getEmail();
         String newpassword = accountData.getNew_password();
@@ -43,30 +43,37 @@ public class MyAccountController {
         boolean verification = SQLManager.checkUserPasswd(id, oldpass);
         if(!verification) errors.setPassword("Mot de passe incorrect");
 
+        String pseudoerr = FiltersManager.isValidPseudo(pseudo);
+        String emailerr = FiltersManager.isValidEmail(email);
 
-        //TODO à sécuriser !
-        if(!pseudo.isEmpty()){
-            boolean pseudoexists = SQLManager.checkPseudoExists(pseudo);
-            if(!pseudoexists && verification)
-                SQLManager.changeString(pseudo, "pseudo", id);
-            else if(!pseudo.isEmpty() && pseudoexists)
-                errors.setPseudo("Ce pseudo est déjà enregistré");
-        }
-
-        if(!email.isEmpty()){
-            boolean emailexists = SQLManager.checkEmailExists(email);
-            if(!emailexists && verification) {
-                if(VarUtils.isEmail(email))
+        if(verification){
+            if(pseudoerr == null) {
+                boolean pseudoexists = SQLManager.checkPseudoExists(pseudo);
+                if(!pseudoexists)
+                    SQLManager.changeString(pseudo, "pseudo", id);
+                else if(!pseudo.isEmpty() && pseudoexists)
+                    pseudoerr = "Ce pseudo est déjà enregistré";
+            }
+            if(emailerr == null){
+                boolean emailexists = SQLManager.checkEmailExists(email);
+                if(!emailexists) {
                     SQLManager.changeString(email, "email", id);
-                else
-                    errors.setEmail("Addresse Email invalide");
-            }else if(!email.isEmpty() && emailexists)
-                errors.setEmail("Cette email est déjà enregistré");
+                }else if(!email.isEmpty() && emailexists)
+                    errors.setEmail("Cette email est déjà enregistré");
+            }
         }
+
+        errors.setPseudo(pseudoerr);
+        errors.setEmail(emailerr);
 
         if(!newpassword.isEmpty() && verification){
-            SQLManager.changeString(CryptoManager.sha512_Hash(newpassword), "password", id);
+            String newpasserr = FiltersManager.isValidPassword(newpassword, true);
+            if(newpasserr == null)
+                SQLManager.changeString(CryptoManager.sha512_Hash(newpassword), "password", id);
+            errors.setNew_password(newpasserr);
         }
+
+        if(!errors.hasErrors()) return "redirect:/";
 
         model.addAttribute("error", errors);
         return "myaccount";

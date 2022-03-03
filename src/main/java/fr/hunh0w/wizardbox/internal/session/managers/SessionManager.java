@@ -19,9 +19,9 @@ public class SessionManager {
         Date init_date = current.getInit_date();
         if(init_date.getTime() >= now.getTime()) return;
 
-        String email = current.getEmail();
-        if(email == null) throw new NullPointerException("Email is null [Account]");
-        Account acc = SQLManager.getAccount(email);
+        int id = current.getId();
+        if(id == -1) throw new NullPointerException("ID is null [Account]");
+        Account acc = SQLManager.getAccount(id);
         if(acc == null) throw new NullPointerException("new Account is null [Refresh]");
 
         httpSession.setAttribute("account", acc);

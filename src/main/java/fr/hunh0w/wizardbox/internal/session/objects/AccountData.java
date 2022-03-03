@@ -125,7 +125,7 @@ public class AccountData {
     }
 
     public boolean hasErrors(){
-        return (error != null);
+        return (error != null || email != null || pseudo != null || nom != null || prenom != null || password != null || new_password != null);
     }
 
     @Override
