@@ -6,10 +6,8 @@ import fr.hunh0w.wizardbox.internal.managers.FiltersManager;
 import fr.hunh0w.wizardbox.internal.managers.SQLManager;
 import fr.hunh0w.wizardbox.internal.session.objects.Account;
 import fr.hunh0w.wizardbox.internal.sql.Database;
-import fr.hunh0w.wizardbox.utils.VarUtils;
 
 import javax.servlet.http.HttpSession;
-import java.util.regex.Pattern;
 
 public class AuthManager {
 

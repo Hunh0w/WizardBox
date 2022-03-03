@@ -5,14 +5,12 @@ import fr.hunh0w.wizardbox.internal.managers.FiltersManager;
 import fr.hunh0w.wizardbox.internal.managers.SQLManager;
 import fr.hunh0w.wizardbox.internal.session.objects.Account;
 import fr.hunh0w.wizardbox.internal.session.objects.AccountData;
-import fr.hunh0w.wizardbox.utils.VarUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.servlet.Filter;
 import javax.servlet.http.HttpSession;
 
 @Controller
